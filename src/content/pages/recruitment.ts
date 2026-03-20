@@ -34,6 +34,11 @@ export const RECRUITMENT: UseCaseContent = {
       suffix: '-60hrs',
       label: 'of recruiter time saved monthly',
     },
-    { type: 'animated', value: 30, suffix: '-40%', label: 'Reduction in time to hire' },
+    {
+      type: 'animated',
+      value: 30,
+      suffix: '-40%',
+      label: 'Reduction in time to hire',
+    },
   ],
 };

@@ -15,7 +15,8 @@ export function ScrollProgress() {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
           setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
           ticking = false;
         });
@@ -32,7 +33,7 @@ export function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 z-50 h-[3px] w-full">
       <div
-        className="h-full bg-primary transition-[width] duration-100"
+        className="bg-primary h-full transition-[width] duration-100"
         style={{ width: `${progress * 100}%` }}
       />
     </div>
