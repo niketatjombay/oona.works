@@ -11,8 +11,7 @@ export const PERFORMANCE_MANAGEMENT: CaseStudyContent = {
     title:
       'Bringing Consistency to Performance Management at a Leading BFSI Company',
     heroImage: '/images/cs-hero-2.png',
-    heroImageAlt:
-      'Performance management dashboard showing KPI analytics',
+    heroImageAlt: 'Performance management dashboard showing KPI analytics',
   },
   problem:
     'We worked with a leading BFSI company with a large distributed workforce to strengthen the quality and consistency of its performance management process. While KPIs were defined across roles, there was significant variation in how they were interpreted & measured.\n\nThis made it difficult to:\n\n• Ensure KPI quality and consistency across roles and teams\n• Anchor performance evaluations in objective, evidence-based data\n• Enable managers to conduct structured, high-quality performance conversations\n• Reduce subjectivity and bias in performance ratings',
@@ -54,7 +53,8 @@ export const PERFORMANCE_MANAGEMENT: CaseStudyContent = {
     ],
   },
   outcomes: {
-    title: 'The AI system transformed performance management into a structured performance intelligence system.',
+    title:
+      'The AI system transformed performance management into a structured performance intelligence system.',
     items: [
       'Improved quality and consistency of KPIs across roles',
       'More objective, evidence-based performance conversations',

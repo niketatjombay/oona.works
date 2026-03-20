@@ -22,9 +22,17 @@ export const WORKFORCE: UseCaseContent = {
     imageAlt: 'Talent Intelligence dashboard',
   },
   stats: [
-    { type: 'static', display: '60-70%', label: 'Reduced time spent on analysis' },
+    {
+      type: 'static',
+      display: '60-70%',
+      label: 'Reduced time spent on analysis',
+    },
     { type: 'static', display: '40-60 hrs', label: 'saved per month' },
-    { type: 'static', display: '20-35%', label: 'Increase in internal role fulfilment' },
+    {
+      type: 'static',
+      display: '20-35%',
+      label: 'Increase in internal role fulfilment',
+    },
     { type: 'static', display: 'Faster', label: 'Talent deployment' },
   ],
 };

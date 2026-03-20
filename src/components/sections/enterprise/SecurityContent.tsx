@@ -6,11 +6,15 @@ interface SecurityContentProps {
   whyText: string;
 }
 
-export function SecurityContent({ body, whyTitle, whyText }: SecurityContentProps) {
+export function SecurityContent({
+  body,
+  whyTitle,
+  whyText,
+}: SecurityContentProps) {
   return (
     <AnimatedSection
       as="div"
-      className="max-w-[var(--content-max)] mx-auto px-4 py-12"
+      className="mx-auto max-w-[var(--content-max)] px-4 py-12"
     >
       {body.split('\n').map((paragraph, i) => (
         <p key={i} className="text-body text-foreground">

@@ -5,7 +5,7 @@ import { HOME_PLATFORM } from '@/content/home';
 
 export function UseCasePlatform() {
   return (
-    <AnimatedSection className="max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
+    <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
       <SectionHeader
         title={HOME_PLATFORM.title}
         subtitle={HOME_PLATFORM.subtitle}
@@ -17,7 +17,7 @@ export function UseCasePlatform() {
         alt="Platform overview"
         width={1380}
         height={512}
-        className="w-full h-auto rounded-2xl mt-8"
+        className="mt-8 h-auto w-full rounded-2xl"
       />
     </AnimatedSection>
   );

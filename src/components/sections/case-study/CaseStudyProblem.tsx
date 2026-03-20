@@ -10,7 +10,7 @@ export function CaseStudyProblem({ text }: CaseStudyProblemProps) {
   return (
     <AnimatedSection
       as="div"
-      className="max-w-[var(--content-max)] mx-auto px-4 py-12"
+      className="mx-auto max-w-[var(--content-max)] px-4 py-12"
     >
       {paragraphs.map((paragraph, index) => (
         <p key={index} className="text-body text-foreground">

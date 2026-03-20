@@ -10,11 +10,14 @@ interface UseCaseStatsProps {
 
 export function UseCaseStats({ stats }: UseCaseStatsProps) {
   return (
-    <AnimatedSection className="max-w-[var(--content-max)] mx-auto px-4 py-12">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-12">
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
         {stats.map((stat) =>
           stat.type === 'static' ? (
-            <div key={stat.label} className="flex flex-col items-center text-center">
+            <div
+              key={stat.label}
+              className="flex flex-col items-center text-center"
+            >
               <span className="text-h3 text-foreground">{stat.display}</span>
               <span className="text-body-sm text-muted-foreground mt-2">
                 {stat.label}

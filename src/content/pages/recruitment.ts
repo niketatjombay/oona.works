@@ -22,8 +22,16 @@ export const RECRUITMENT: UseCaseContent = {
     imageAlt: 'Recruitment Intelligence dashboard',
   },
   stats: [
-    { type: 'static', display: '70-75%', label: 'Reduction in time to screen candidates' },
-    { type: 'static', display: '40-60hrs', label: 'of recruiter time saved monthly' },
+    {
+      type: 'static',
+      display: '70-75%',
+      label: 'Reduction in time to screen candidates',
+    },
+    {
+      type: 'static',
+      display: '40-60hrs',
+      label: 'of recruiter time saved monthly',
+    },
     { type: 'static', display: '30-40%', label: 'Reduction in time to hire' },
   ],
 };

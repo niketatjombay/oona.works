@@ -13,8 +13,8 @@ interface CaseStudyBodyProps {
 
 export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
   return (
-    <div className="max-w-[var(--content-max)] mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="mx-auto max-w-[var(--content-max)] px-4 py-12">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <AnimatedSection
           as="div"
           className="bg-surface rounded-xl p-[var(--section-padding)]"
@@ -40,7 +40,7 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
           delay={0.1}
         >
           <h3 className="text-h3 text-foreground mb-6">{outcomes.title}</h3>
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className="list-disc space-y-2 pl-6">
             {outcomes.items.map((item, index) => (
               <li key={index} className="text-body-sm text-foreground">
                 {item}

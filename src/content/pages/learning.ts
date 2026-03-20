@@ -22,8 +22,20 @@ export const LEARNING: UseCaseContent = {
     imageAlt: 'Learning Intelligence dashboard',
   },
   stats: [
-    { type: 'static', display: '70-90%', label: 'Reduction in learning content creation time' },
-    { type: 'static', display: '5-10X', label: 'Faster training content generation' },
-    { type: 'static', display: '30-50%', label: 'Acceleration in Skill Acquisition' },
+    {
+      type: 'static',
+      display: '70-90%',
+      label: 'Reduction in learning content creation time',
+    },
+    {
+      type: 'static',
+      display: '5-10X',
+      label: 'Faster training content generation',
+    },
+    {
+      type: 'static',
+      display: '30-50%',
+      label: 'Acceleration in Skill Acquisition',
+    },
   ],
 };

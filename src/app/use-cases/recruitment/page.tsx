@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { PageLayout } from '@/components/layouts';
-import { UseCaseDashboard, UseCaseStats, UseCasePlatform } from '@/components/sections/use-case';
+import {
+  UseCaseDashboard,
+  UseCaseStats,
+  UseCasePlatform,
+} from '@/components/sections/use-case';
 import { RECRUITMENT } from '@/content/pages';
 
 const data = RECRUITMENT;

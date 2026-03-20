@@ -8,7 +8,8 @@ export const TALENT_INTELLIGENCE: CaseStudyContent = {
   },
   banner: {
     badge: 'CASE STUDY',
-    title: 'Transforming talent intelligence at a global agro chemical company.',
+    title:
+      'Transforming talent intelligence at a global agro chemical company.',
     heroImage: '/images/cs-hero-1.png',
     heroImageAlt:
       'Talent intelligence dashboard showing leadership pipeline analytics',
@@ -65,7 +66,8 @@ export const TALENT_INTELLIGENCE: CaseStudyContent = {
     ],
   },
   outcomes: {
-    title: 'The AI system transformed succession planning from static lists to a dynamic talent intelligence engine.',
+    title:
+      'The AI system transformed succession planning from static lists to a dynamic talent intelligence engine.',
     items: [
       'Clear visibility into global leadership bench strength',
       'Faster data-driven succession decisions',

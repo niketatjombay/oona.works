@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { PageLayout } from '@/components/layouts';
-import { CaseStudyProblem, CaseStudySummary, CaseStudyBody } from '@/components/sections/case-study';
+import {
+  CaseStudyProblem,
+  CaseStudySummary,
+  CaseStudyBody,
+} from '@/components/sections/case-study';
 import { HighlightQuote } from '@/components/sections/shared';
 import { PERFORMANCE_MANAGEMENT } from '@/content/case-studies';
 

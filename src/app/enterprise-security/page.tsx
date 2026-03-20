@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { PageLayout } from '@/components/layouts';
-import { SecurityContent, SecurityPillars } from '@/components/sections/enterprise';
+import {
+  SecurityContent,
+  SecurityPillars,
+} from '@/components/sections/enterprise';
 import { HighlightQuote } from '@/components/sections/shared';
 import { ENTERPRISE_SECURITY } from '@/content/pages/enterprise-security';
 
@@ -19,7 +22,11 @@ export default function EnterpriseSecurityPage() {
       heroImage={data.banner.heroImage}
       heroImageAlt={data.banner.heroImageAlt}
     >
-      <SecurityContent body={data.body} whyTitle={data.whyTitle} whyText={data.whyText} />
+      <SecurityContent
+        body={data.body}
+        whyTitle={data.whyTitle}
+        whyText={data.whyText}
+      />
       <HighlightQuote text={data.quote} />
       <SecurityPillars title={data.pillarsTitle} pillars={data.pillars} />
     </PageLayout>

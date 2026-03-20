@@ -16,7 +16,7 @@ export function UseCaseDashboard({
   imageAlt,
 }: UseCaseDashboardProps) {
   return (
-    <AnimatedSection className="max-w-[var(--content-max)] mx-auto px-4 py-12">
+    <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-12">
       <SectionHeader
         title={title}
         subtitle={subtitle}
@@ -28,7 +28,7 @@ export function UseCaseDashboard({
         alt={imageAlt}
         width={1140}
         height={524}
-        className="w-full h-auto rounded-2xl mt-8"
+        className="mt-8 h-auto w-full rounded-2xl"
       />
     </AnimatedSection>
   );

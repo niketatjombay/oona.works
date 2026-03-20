@@ -60,7 +60,8 @@ export const LEARNING_CONTENT: CaseStudyContent = {
     ],
   },
   outcomes: {
-    title: 'The AI system transformed static knowledge repositories into a dynamic learning intelligence platform.',
+    title:
+      'The AI system transformed static knowledge repositories into a dynamic learning intelligence platform.',
     items: [
       'Rapid conversion of existing operational content into structured lessons',
       'Delivery of role-relevant training at scale',

@@ -22,8 +22,20 @@ export const PERFORMANCE: UseCaseContent = {
     imageAlt: 'Performance Intelligence dashboard',
   },
   stats: [
-    { type: 'static', display: '50-60%', label: 'Reduced in time spent on performance review prep' },
-    { type: 'static', display: '15-20%', label: 'Improvement in goal alignment' },
-    { type: 'static', display: '20-30%', label: 'Improvement in quality of feedback' },
+    {
+      type: 'static',
+      display: '50-60%',
+      label: 'Reduced in time spent on performance review prep',
+    },
+    {
+      type: 'static',
+      display: '15-20%',
+      label: 'Improvement in goal alignment',
+    },
+    {
+      type: 'static',
+      display: '20-30%',
+      label: 'Improvement in quality of feedback',
+    },
   ],
 };
