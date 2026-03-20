@@ -11,38 +11,39 @@
 
 :root {
   /* --- shadcn semantic tokens (mapped to Oona.Works palette) --- */
-  --primary: #F72685;
-  --primary-foreground: #FFFFFF;
-  --secondary: #AFFC42;
+  --primary: #f72685;
+  --primary-foreground: #ffffff;
+  --secondary: #affc42;
   --secondary-foreground: #070708;
-  --background: #F7F7F8;
+  --background: #f7f7f8;
   --foreground: #070708;
-  --card: #FFFFFF;
+  --card: #ffffff;
   --card-foreground: #070708;
-  --muted: #F7F7F8;
+  --muted: #f7f7f8;
   --muted-foreground: #535455;
-  --border: #E9EAEC;
-  --input: #E9EAEC;
-  --ring: #F72685;
-  --accent: #C0FF5C;
+  --border: #e9eaec;
+  --input: #e9eaec;
+  --ring: #f72685;
+  --accent: #c0ff5c;
   --accent-foreground: #070708;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --popover: #FFFFFF;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --popover: #ffffff;
   --popover-foreground: #070708;
 
   /* --- Oona.Works extended palette --- */
-  --secondary-light: #C0FF5C;
-  --surface: #FFFFFF;
-  --border-light: #D5D6D8;
-  --muted-label: #A1A2A5;
+  --secondary-light: #c0ff5c;
+  --surface: #ffffff;
+  --border-light: #d5d6d8;
+  --muted-label: #a1a2a5;
   --placeholder: #999999;
-  --nav-text: #393A3C;
+  --nav-text: #393a3c;
 
   /* --- Font families (intermediate vars to avoid circular refs in @theme) --- */
   /* --font-poppins and --font-inter are set by next/font/google in layout.tsx */
   --oona-font-heading: var(--font-poppins), sans-serif;
-  --oona-font-body: var(--font-poppins), sans-serif; /* Intentionally same as heading for now */
+  --oona-font-body:
+    var(--font-poppins), sans-serif; /* Intentionally same as heading for now */
   --oona-font-ui: var(--font-inter), sans-serif;
 
   /* --- Border radii (intermediate vars to avoid circular refs in @theme) --- */
