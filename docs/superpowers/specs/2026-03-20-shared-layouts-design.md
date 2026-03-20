@@ -70,13 +70,13 @@ All 8 inner pages use `PageLayout`. Each page provides its banner props and page
 | `src/content/case-studies/talent-intelligence.ts` | Create | CS1 — all text from Figma node 20023:413 |
 | `src/content/case-studies/performance-management.ts` | Create | CS2 — all text from Figma node 20023:647 |
 | `src/content/case-studies/learning-content.ts` | Create | CS3 — all text from Figma node 20023:771 |
-| `src/content/case-studies/index.ts` | Modify | Barrel exports |
+| `src/content/case-studies/index.ts` | Create | Barrel exports |
 | `src/content/pages/workforce.ts` | Create | Workforce — all text from Figma node 20023:901 |
 | `src/content/pages/performance.ts` | Create | Performance — all text from Figma node 20024:1055 |
 | `src/content/pages/learning.ts` | Create | Learning — all text from Figma node 20026:1175 |
 | `src/content/pages/recruitment.ts` | Create | Recruitment — all text from Figma node 20028:1305 |
 | `src/content/pages/enterprise-security.ts` | Create | Security — all text from Figma node 20137:120 |
-| `src/content/pages/index.ts` | Modify | Barrel exports |
+| `src/content/pages/index.ts` | Create | Barrel exports |
 
 ### Page files (replace existing placeholders)
 
@@ -90,6 +90,18 @@ All 8 inner pages use `PageLayout`. Each page provides its banner props and page
 | `src/app/use-cases/learning/page.tsx` | PageLayout + UseCase sections |
 | `src/app/use-cases/recruitment/page.tsx` | PageLayout + UseCase sections |
 | `src/app/enterprise-security/page.tsx` | PageLayout + Enterprise sections |
+
+Each page file exports `metadata` (static) for SEO:
+
+```tsx
+import type { Metadata } from 'next';
+import { CONTENT } from '@/content/...';
+
+export const metadata: Metadata = {
+  title: `${CONTENT.metadata.title} — Oona.Works`,
+  description: CONTENT.metadata.description,
+};
+```
 
 ### Modified files
 
@@ -143,7 +155,7 @@ interface PageBannerProps {
 
 **Left column:**
 - Decorative shape SVG (reuse `public/images/decorative-shape.svg`, 150×74) + horizontal dividers (1px `bg-border` lines, positioned to match Figma)
-- Badge pill: `inline-flex items-center rounded-full border border-border px-4 py-1 text-overline text-foreground`
+- Badge pill: `inline-flex items-center rounded-full border border-border px-4 py-1 text-overline text-muted-label` (uses `muted-label` color consistent with overlines throughout the site; verify against Figma during implementation)
 - Title: `text-h3 text-foreground mt-4` (wraps naturally for long case study titles)
 - Subtitle (optional): `text-body-lg text-foreground mt-4`
 
@@ -232,6 +244,8 @@ Server component. Two columns side by side.
 
 ### Content type for case studies
 
+**Note:** The existing `CaseStudy` interface in `src/types/index.ts` was created as a generic placeholder during scaffolding. It does not match the actual Figma data structure. The new `CaseStudyContent` interface below replaces it. Remove the old `CaseStudy` interface from `types/index.ts` during implementation.
+
 ```typescript
 interface CaseStudyContent {
   metadata: { title: string; description: string };
@@ -319,10 +333,10 @@ Server component. Dashboard heading + screenshot.
 
 ### UseCasePlatform
 
-Server component. Identical to the home page's `PlatformSection` content — "HOW we do it" heading + platform screenshot. Reuses `HOME_PLATFORM` content from `content/home.ts`.
+Server component. Same content as the home page's platform section — "HOW we do it" heading + platform screenshot. Reuses `HOME_PLATFORM` content from `content/home.ts` for title and subtitle. The platform screenshot image is at `public/images/platform-overview.png` (already downloaded in Sub-project 4).
 
 - Uses `SectionHeader` centered with `titleSize="h4"`
-- Platform screenshot `next/image` below
+- Platform screenshot: `next/image` with `src="/images/platform-overview.png"`, `width={1380} height={512}`, `rounded-2xl`
 - Wraps in `AnimatedSection`
 
 ### Content type for use cases
@@ -341,11 +355,18 @@ interface UseCaseContent {
     title: string;
     subtitle: string;
     image: string;
+    imageAlt: string;
   };
-  stats: {
-    value: string;
+  stats: ({
+    type: 'static';
+    display: string;
     label: string;
-  }[];
+  } | {
+    type: 'animated';
+    value: number;
+    suffix?: string;
+    label: string;
+  })[];
 }
 ```
 
@@ -414,7 +435,7 @@ Server component. 6 cards in 3×2 grid.
 ### Content type for enterprise security
 
 ```typescript
-interface SecurityContent {
+interface EnterpriseSecurityContent {
   metadata: { title: string; description: string };
   banner: {
     badge: string;
