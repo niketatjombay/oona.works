@@ -3,6 +3,7 @@ import { Poppins, Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/common/Navbar';
 import { Footer } from '@/components/common/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -18,9 +19,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Oona.Works — Your AI Partner in HR Transformation',
+  metadataBase: new URL('https://oona.works'),
+  title: {
+    default: 'Oona.Works — Your AI Partner in HR Transformation',
+    template: '%s — Oona.Works',
+  },
   description:
     'AI-powered HR transformation platform for enterprise consulting firms.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://oona.works',
+    siteName: 'Oona.Works',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Oona.Works',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +59,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
