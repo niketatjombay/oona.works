@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
-import { X, ChevronRight } from 'lucide-react';
+import { X, ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { NAV_LINKS, CONTACT_EMAIL, CONTACT_CTA_LABEL } from '@/lib/constants';
 
 interface MobileMenuProps {
@@ -14,6 +15,12 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  // Reset expanded sections when menu closes
+  useEffect(() => {
+    if (!isOpen) setExpandedSection(null);
+  }, [isOpen]);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -58,26 +65,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Build flat menu links with children expanded
-  const menuLinks: {
-    label: string;
-    href: string;
-    isChild?: boolean;
-    isSeparator?: boolean;
-  }[] = [];
-  NAV_LINKS.forEach((link, i) => {
-    if (i > 0 && link.children) {
-      menuLinks.push({ label: '', href: '', isSeparator: true });
-    }
-    menuLinks.push({ label: link.label, href: link.href });
-    if (link.children) {
-      link.children.forEach((child) => {
-        menuLinks.push({ label: child.label, href: child.href, isChild: true });
-      });
-    }
-  });
-  menuLinks.push({ label: '', href: '', isSeparator: true });
-  menuLinks.push({ label: CONTACT_CTA_LABEL, href: `mailto:${CONTACT_EMAIL}` });
+  const toggleSection = (label: string) => {
+    setExpandedSection(expandedSection === label ? null : label);
+  };
 
   const drawerContent = (
     <div className="flex h-full flex-col">
@@ -94,52 +84,79 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       </div>
 
       {/* Navigation links */}
-      <nav className="flex-1 px-6">
+      <nav className="flex-1 overflow-y-auto px-6">
         <div className="flex flex-col gap-1">
-          {menuLinks.map((link, idx) => {
-            if (link.isSeparator) {
+          {NAV_LINKS.map((link) => {
+            // Items with children: collapsible accordion
+            if (link.children) {
+              const isExpanded = expandedSection === link.label;
               return (
-                <div
-                  key={`sep-${idx}`}
-                  className="border-border my-2 border-t"
-                />
+                <div key={link.label}>
+                  <button
+                    onClick={() => toggleSection(link.label)}
+                    className="typo-nav text-foreground hover:bg-muted flex w-full items-center justify-between rounded-lg px-4 py-3 transition-colors"
+                    aria-expanded={isExpanded}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={16}
+                      className={cn(
+                        'text-muted-foreground transition-transform duration-200',
+                        isExpanded && 'rotate-180'
+                      )}
+                    />
+                  </button>
+
+                  {/* Collapsible children */}
+                  <div
+                    className={cn(
+                      'overflow-hidden transition-all duration-200',
+                      isExpanded
+                        ? 'max-h-[500px] opacity-100'
+                        : 'max-h-0 opacity-0'
+                    )}
+                  >
+                    <div className="flex flex-col gap-1 pb-1 pl-4">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={onClose}
+                          className="typo-body-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg px-4 py-2.5 transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             }
 
-            const linkClasses = link.isChild
-              ? 'typo-body-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg px-8 py-3 transition-colors'
-              : 'typo-nav text-foreground hover:bg-muted rounded-lg px-4 py-3 transition-colors flex items-center justify-between';
-
-            if (link.href.startsWith('/')) {
-              return (
-                <Link
-                  key={link.href + link.label}
-                  href={link.href}
-                  onClick={onClose}
-                  className={linkClasses}
-                >
-                  {link.label}
-                  {!link.isChild && (
-                    <ChevronRight size={16} className="text-muted-foreground" />
-                  )}
-                </Link>
-              );
-            }
-
+            // Simple links (Home, etc.)
             return (
-              <a
-                key={link.href + link.label}
+              <Link
+                key={link.href}
                 href={link.href}
                 onClick={onClose}
-                className={linkClasses}
+                className="typo-nav text-foreground hover:bg-muted rounded-lg px-4 py-3 transition-colors"
               >
                 {link.label}
-                {!link.isChild && (
-                  <ChevronRight size={16} className="text-muted-foreground" />
-                )}
-              </a>
+              </Link>
             );
           })}
+
+          {/* Separator */}
+          <div className="border-border my-2 border-t" />
+
+          {/* Contact link */}
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            onClick={onClose}
+            className="typo-nav text-foreground hover:bg-muted rounded-lg px-4 py-3 transition-colors"
+          >
+            {CONTACT_CTA_LABEL}
+          </a>
         </div>
       </nav>
 
@@ -155,13 +172,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       <>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <div
               className="bg-foreground/40 fixed inset-0 z-50"
               onClick={onClose}
               aria-hidden="true"
             />
-            {/* Drawer */}
             <div
               className="bg-surface fixed top-0 right-0 z-50 h-full w-[300px] shadow-2xl"
               role="dialog"
@@ -179,7 +194,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -189,7 +203,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             onClick={onClose}
             aria-hidden="true"
           />
-          {/* Drawer — slides in from right */}
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
