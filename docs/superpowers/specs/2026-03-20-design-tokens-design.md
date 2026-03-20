@@ -11,7 +11,7 @@ The project uses Next.js 16.2.0, React 19, Tailwind CSS 4 (CSS-first `@theme` ap
 | File | Change |
 |------|--------|
 | `src/styles/globals.css` | Replace shadcn default tokens with Oona.Works design tokens. Update `@theme` block, `:root` variables, and `@layer base` styles. Remove dark mode block (not in Figma design). Fill placeholder sections. |
-| `src/app/layout.tsx` | Remove Geist fonts. Add Poppins (400, 500, 600) + Inter (400, 500) via `next/font/google`. Update `<html>` className with new font CSS variables. |
+| `src/app/layout.tsx` | Remove Geist fonts. Add Poppins (400, 500, 600) + Inter (variable font) via `next/font/google`. Update `<html>` className with new font CSS variables. |
 
 No new files created. No other files modified.
 
@@ -55,6 +55,7 @@ shadcn components expect certain semantic tokens. Map them to Oona.Works tokens:
 --accent: #C0FF5C;
 --accent-foreground: #070708;
 --destructive: #EF4444;
+--destructive-foreground: #FFFFFF;
 --popover: #FFFFFF;
 --popover-foreground: #070708;
 ```
@@ -65,7 +66,7 @@ shadcn components expect certain semantic tokens. Map them to Oona.Works tokens:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--font-heading` | `var(--font-poppins), sans-serif` | All headings (H1-H6) |
+| `--font-heading` | `var(--font-poppins), sans-serif` | All headings (H1-H6). Intentionally same as `--font-body` for now; separated for future flexibility. |
 | `--font-body` | `var(--font-poppins), sans-serif` | Body text, descriptions |
 | `--font-ui` | `var(--font-inter), sans-serif` | Nav links, form labels, input text, overlines |
 
@@ -79,15 +80,18 @@ import { Poppins, Inter } from 'next/font/google';
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
+  display: 'swap',
   variable: '--font-poppins',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  display: 'swap',
   variable: '--font-inter',
 });
 ```
+
+Note: Inter is a variable font — no `weight` array needed. Poppins is not variable, so specific weights must be listed.
 
 Applied to `<html>` element: `className={`${poppins.variable} ${inter.variable}`}`.
 
@@ -95,7 +99,7 @@ Remove all Geist font imports and references. Remove `--font-geist-sans` and `--
 
 ### Type scale
 
-Defined as `@theme` extensions so Tailwind generates utility classes.
+The type scale is defined as composite `@utility` classes in `globals.css`. Tailwind v4 `@theme` only supports `--font-size-*` with `--font-size-*--line-height` (no letter-spacing or font-weight). Since our type tokens need all four properties, we use `@utility` directives to create complete typography classes.
 
 | Class | Font | Size | Line Height | Letter Spacing | Weight |
 |-------|------|------|-------------|----------------|--------|
@@ -112,9 +116,23 @@ Defined as `@theme` extensions so Tailwind generates utility classes.
 | `text-overline` | Inter | 14px | 25.2px (1.8) | 1.12px | 500 |
 | `text-nav` | Inter | 14px | 24px (1.71) | 0 | 500 |
 | `text-button` | Poppins | 16px | 24px (1.5) | 0 | 500 |
-| `text-button-lg` | Poppins | 24px | 83.2px | -1.92px | 500 |
+| `text-button-lg` | Poppins | 24px | 32px (1.33) | 0 | 500 |
 
-**Implementation note:** Tailwind CSS v4 `@theme` supports `--font-size-*` for custom font size utilities. Each entry maps to a `[fontSize, { lineHeight, letterSpacing, fontWeight }]` tuple.
+**`text-h3` vs `text-h4`:** Both are 32px/40px but with different letter-spacing. `text-h3` (-1.2px) is used for standalone section headings (e.g., "What we do!", "Case Studies"). `text-h4` (-0.96px) is used for centered section titles with subtitles below (e.g., "Why US?", "AI Intelligence across the HR Lifecycle"). Both are needed per the Figma design.
+
+**Implementation approach:** Each type class is a `@utility` directive in `globals.css`:
+
+```css
+@utility text-h1 {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  line-height: 83.2px;
+  letter-spacing: -1.92px;
+  font-weight: 500;
+}
+```
+
+This gives us classes like `text-h1`, `text-body-lg`, `text-overline` etc. that apply the complete type style in one class. These are composable with other Tailwind utilities — e.g., `text-h1 text-primary` works as expected.
 
 ## Border Radius Tokens
 
@@ -140,6 +158,8 @@ Defined as `@theme` extensions so Tailwind generates utility classes.
 | `--card-padding-lg` | `48px` | Large card padding (footer container) |
 | `--nav-height` | `84px` | Navbar pill height |
 | `--nav-offset` | `24px` | Navbar top offset from page edge |
+
+All spacing tokens use `px` intentionally for pixel-perfect Figma fidelity. This is a fixed-width marketing site, not a fluid app.
 
 ## globals.css Structure
 
