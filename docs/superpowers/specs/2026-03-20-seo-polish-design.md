@@ -64,12 +64,12 @@ Add to `src/app/page.tsx`:
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Oona.Works — Your AI Partner in HR Transformation',
+  title: { absolute: 'Oona.Works — Your AI Partner in HR Transformation' },
   description: 'AI-powered HR transformation platform for enterprise consulting firms. Deploy AI across the full HR ecosystem.',
 };
 ```
 
-Note: The home page uses the full title (not the template) since the default title in the layout already covers this. The explicit export ensures the home page description is specific.
+Note: Uses `title: { absolute: '...' }` to bypass the template pattern and avoid a doubled title like "Oona.Works — ... — Oona.Works".
 
 ### Inner page metadata update
 
@@ -90,6 +90,8 @@ The ` — Oona.Works` suffix is now added automatically by the template. Update 
 ### OG image
 
 Create a 1200×630px Open Graph image. Use the Figma MCP to screenshot the hero area of the home page, or create a simple branded image with the Oona.Works logo on the brand background color (#F7F7F8) with the primary accent (#F72685). Save as `public/images/og-image.png`.
+
+Also update `SITE_CONFIG.ogImage` in `src/lib/constants.ts` from `'/og-image.png'` to `'/images/og-image.png'` to match the actual file location.
 
 ## 2. SEO — robots.ts + sitemap.ts
 
@@ -214,6 +216,8 @@ This is a single-point fix — since every animated section in the app uses `Ani
 
 For `scaleOnHover` animations on CTAButton and card components, Framer Motion's global `reducedMotion` detection is respected by default when using `whileHover` — no additional changes needed.
 
+**Note:** Some components use `motion.*` directly instead of `AnimatedSection` (e.g., `HeroSection`, `LifecycleSection`, `CaseStudiesSection`). These are NOT covered by the `AnimatedSection` fix. Add `useReducedMotion` checks to these components as well — same pattern: if reduced motion is preferred, render static elements without animation props.
+
 ## 5. Responsive — Code audit + fixes
 
 ### Known issues to check and fix
@@ -225,12 +229,19 @@ For `scaleOnHover` animations on CTAButton and card components, Framer Motion's 
 
 **Contact form** (`src/components/sections/shared/SharedContactSection.tsx`):
 - First Name + Last Name `grid-cols-2` may be too cramped at 375px
-- Fix: Change to `grid-cols-1 sm:grid-cols-2`
+- Fix: Change `grid-cols-2` to `grid-cols-1 sm:grid-cols-2`
 
 **Stats grid** (`src/components/sections/home/StatsSection.tsx`):
 - `text-display` (44px) may overflow on mobile
-- Fix: Add responsive sizing: `text-[28px] leading-[36px] md:text-display`
-- The 2×2 stats grid should collapse to 1-column on very small screens
+- Fix: Add responsive sizing on stat labels: `text-[28px] leading-[36px] md:text-display`
+- The 2×2 stats grid should collapse to 1-column on very small screens: change `grid-cols-2` to `grid-cols-1 sm:grid-cols-2`
+- The divider `col-span-2` must also become `col-span-1 sm:col-span-2` to match
+
+**Section padding** — These components use `p-[var(--section-padding)]` (56px) which is too much on mobile:
+- `src/components/sections/shared/SharedContactSection.tsx`
+- `src/components/sections/home/StatsSection.tsx`
+- `src/components/sections/home/ValuePropSection.tsx` (cards)
+- Fix: Change to `p-6 md:p-[var(--section-padding)]`
 
 **PageBanner** (`src/components/layouts/PageBanner.tsx`):
 - Long case study titles may overflow on mobile
