@@ -4,7 +4,7 @@ import { FOOTER_DATA, SITE_CONFIG } from '@/lib/constants';
 export function Footer() {
   return (
     <footer className="mx-auto w-full max-w-[var(--content-max)] px-4 pb-8">
-      <div className="flex flex-col gap-6 rounded-2xl bg-surface p-[var(--card-padding-lg)] md:flex-row md:items-center md:justify-between md:gap-0">
+      <div className="bg-surface flex flex-col gap-6 rounded-2xl p-[var(--card-padding-lg)] md:flex-row md:items-center md:justify-between md:gap-0">
         <div className="flex flex-col gap-1">
           <span className="text-body-lg text-primary">
             {FOOTER_DATA.emailLabel}
@@ -25,7 +25,7 @@ export function Footer() {
         />
       </div>
 
-      <p className="mt-4 text-center text-body-sm text-muted-foreground">
+      <p className="text-body-sm text-muted-foreground mt-4 text-center">
         {FOOTER_DATA.copyright}
       </p>
     </footer>

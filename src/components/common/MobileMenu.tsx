@@ -71,14 +71,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm"
+          className="bg-foreground/95 fixed inset-0 z-50 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
         >
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="absolute right-6 top-6 flex size-12 items-center justify-center text-white"
+            className="absolute top-6 right-6 flex size-12 items-center justify-center text-white"
             aria-label="Close menu"
           >
             <X size={24} />

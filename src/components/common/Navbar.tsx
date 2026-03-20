@@ -29,7 +29,7 @@ export function Navbar({ className }: NavbarProps) {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50',
+          'fixed top-0 right-0 left-0 z-50',
           'flex justify-center',
           'pt-[var(--nav-offset)]',
           className
@@ -39,10 +39,10 @@ export function Navbar({ className }: NavbarProps) {
           aria-label="Main navigation"
           className={cn(
             'flex w-full max-w-[var(--container-max)] items-center',
-            'h-[var(--nav-height)] rounded-pill px-4',
+            'rounded-pill h-[var(--nav-height)] px-4',
             'transition-all duration-300',
             isScrolled
-              ? 'border border-border bg-surface/80 shadow-sm backdrop-blur-lg'
+              ? 'border-border bg-surface/80 border shadow-sm backdrop-blur-lg'
               : 'border border-transparent bg-transparent'
           )}
         >
@@ -61,12 +61,10 @@ export function Navbar({ className }: NavbarProps) {
           <div className="ml-4 hidden items-center gap-0 md:flex">
             {NAV_LINKS.map((link, i) => (
               <div key={link.href} className="flex items-center">
-                {i > 0 && (
-                  <div className="mx-4 h-4 w-px bg-border-light" />
-                )}
+                {i > 0 && <div className="bg-border-light mx-4 h-4 w-px" />}
                 <Link
                   href={link.href}
-                  className="text-nav text-nav-text rounded-pill px-4 py-2 transition-colors hover:bg-muted"
+                  className="text-nav text-nav-text rounded-pill hover:bg-muted px-4 py-2 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -80,7 +78,7 @@ export function Navbar({ className }: NavbarProps) {
           {/* Menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="flex size-10 items-center justify-center rounded-pill transition-colors hover:bg-muted"
+            className="rounded-pill hover:bg-muted flex size-10 items-center justify-center transition-colors"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
           >
