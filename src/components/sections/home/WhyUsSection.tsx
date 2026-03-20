@@ -31,9 +31,9 @@ export function WhyUsSection() {
             }`}
           >
             <p className="text-body-lg">
-              {card.prefix && <span className="text-muted">{card.prefix}</span>}
+              {card.prefix && <span className="text-muted-foreground">{card.prefix}</span>}
               <span className="text-foreground font-semibold">{card.bold}</span>
-              <span className="text-muted">{card.rest}</span>
+              <span className="text-muted-foreground">{card.rest}</span>
             </p>
           </AnimatedSection>
         ))}

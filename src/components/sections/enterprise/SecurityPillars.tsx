@@ -42,7 +42,7 @@ function PillarCard({
         <h4 className="text-card-heading text-foreground font-semibold">
           {pillar.title}
         </h4>
-        <p className="text-body-sm text-muted">{pillar.description}</p>
+        <p className="text-body-sm text-muted-foreground">{pillar.description}</p>
       </div>
     </motion.div>
   );

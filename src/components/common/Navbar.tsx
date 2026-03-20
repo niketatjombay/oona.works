@@ -75,10 +75,10 @@ export function Navbar({ className }: NavbarProps) {
           {/* Spacer */}
           <div className="flex-1" />
 
-          {/* Menu button */}
+          {/* Menu button — hidden on desktop where nav links are visible */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="rounded-pill hover:bg-muted flex size-10 items-center justify-center transition-colors"
+            className="rounded-pill hover:bg-muted flex size-10 items-center justify-center transition-colors md:hidden"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
           >

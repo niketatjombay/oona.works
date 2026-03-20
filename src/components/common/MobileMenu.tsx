@@ -76,7 +76,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <button
               ref={closeButtonRef}
               onClick={onClose}
-              className="absolute top-6 right-6 flex size-12 items-center justify-center text-white"
+              className="absolute top-6 right-6 flex size-12 items-center justify-center text-primary-foreground"
               aria-label="Close menu"
             >
               <X size={24} />
@@ -89,7 +89,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <Link
                       href={link.href}
                       onClick={onClose}
-                      className="text-h3 text-white transition-opacity hover:opacity-80"
+                      className="text-h3 text-primary-foreground transition-opacity hover:opacity-80"
                     >
                       {link.label}
                     </Link>
@@ -97,7 +97,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <a
                       href={link.href}
                       onClick={onClose}
-                      className="text-h3 text-white transition-opacity hover:opacity-80"
+                      className="text-h3 text-primary-foreground transition-opacity hover:opacity-80"
                     >
                       {link.label}
                     </a>
@@ -126,7 +126,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="absolute top-6 right-6 flex size-12 items-center justify-center text-white"
+            className="absolute top-6 right-6 flex size-12 items-center justify-center text-primary-foreground"
             aria-label="Close menu"
           >
             <X size={24} />
@@ -144,7 +144,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <Link
                     href={link.href}
                     onClick={onClose}
-                    className="text-h3 text-white transition-opacity hover:opacity-80"
+                    className="text-h3 text-primary-foreground transition-opacity hover:opacity-80"
                   >
                     {link.label}
                   </Link>
@@ -152,7 +152,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <a
                     href={link.href}
                     onClick={onClose}
-                    className="text-h3 text-white transition-opacity hover:opacity-80"
+                    className="text-h3 text-primary-foreground transition-opacity hover:opacity-80"
                   >
                     {link.label}
                   </a>
