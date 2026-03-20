@@ -33,15 +33,25 @@ export interface SectionContent {
   features?: Feature[];
 }
 
-export interface CaseStudy {
-  slug: string;
-  title: string;
-  company: string;
-  industry: string;
+export interface CaseStudyContent {
+  metadata: { title: string; description: string };
+  banner: {
+    badge: string;
+    title: string;
+    heroImage: string;
+    heroImageAlt: string;
+  };
+  problem: string;
   summary: string;
-  metrics: Stat[];
-  coverImage: string;
-  content: string;
+  howItWorks: {
+    title: string;
+    steps: { number: number; title: string; description: string }[];
+  };
+  outcomes: {
+    title: string;
+    items: string[];
+  };
+  quote: string;
 }
 
 export interface PageContent {
