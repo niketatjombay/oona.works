@@ -45,18 +45,25 @@ export function ValuePropSection() {
   const { leftCard, rightCard } = HOME_VALUE_PROP;
 
   return (
-    <div className="max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Left Card */}
-        <AnimatedSection as="div" className={cn('bg-surface rounded-xl p-[var(--section-padding)]')}>
+        <AnimatedSection
+          as="div"
+          className={cn('bg-surface rounded-xl p-[var(--section-padding)]')}
+        >
           <h3 className="text-h3 text-foreground">{leftCard.title}</h3>
-          <div className="mt-8 text-body-lg text-foreground">
+          <div className="text-body-lg text-foreground mt-8">
             {renderBodyParagraphs(leftCard.body)}
           </div>
         </AnimatedSection>
 
         {/* Right Card */}
-        <AnimatedSection as="div" delay={0.1} className={cn('bg-surface rounded-xl p-[var(--section-padding)]')}>
+        <AnimatedSection
+          as="div"
+          delay={0.1}
+          className={cn('bg-surface rounded-xl p-[var(--section-padding)]')}
+        >
           <h3 className="text-h3 text-foreground">{rightCard.title}</h3>
           <div className="mt-4">
             <RightCardBody body={rightCard.body} />

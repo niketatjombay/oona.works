@@ -22,11 +22,7 @@ export function HeroSection() {
           {/* Left column */}
           <div className="flex flex-col items-start">
             {/* Logo mark */}
-            <motion.div
-              variants={fadeIn}
-              initial="hidden"
-              animate="visible"
-            >
+            <motion.div variants={fadeIn} initial="hidden" animate="visible">
               <Image
                 src="/images/logo-mark.png"
                 alt="Oona.Works logo mark"

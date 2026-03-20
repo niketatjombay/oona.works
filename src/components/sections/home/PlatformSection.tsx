@@ -5,13 +5,13 @@ import { AnimatedSection } from '@/components/animations';
 
 export function PlatformSection() {
   return (
-    <section className="relative max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
+    <section className="relative mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
       <Image
         src="/images/accent-shape.svg"
         alt=""
         width={162}
         height={90}
-        className="absolute top-0 right-[-40px] opacity-50 pointer-events-none"
+        className="pointer-events-none absolute top-0 right-[-40px] opacity-50"
         aria-hidden
       />
       <SectionHeader
@@ -26,7 +26,7 @@ export function PlatformSection() {
           alt="Platform overview"
           width={1380}
           height={512}
-          className="rounded-2xl w-full"
+          className="w-full rounded-2xl"
         />
       </AnimatedSection>
     </section>

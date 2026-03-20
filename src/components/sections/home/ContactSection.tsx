@@ -16,7 +16,7 @@ export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -26,8 +26,10 @@ export function ContactSection() {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
-    if (!formData.firstName.trim()) newErrors.firstName = 'This field is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'This field is required';
+    if (!formData.firstName.trim())
+      newErrors.firstName = 'This field is required';
+    if (!formData.lastName.trim())
+      newErrors.lastName = 'This field is required';
     if (!formData.email.trim()) {
       newErrors.email = 'This field is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -48,7 +50,7 @@ export function ContactSection() {
     'bg-surface border border-border rounded-sm h-[56px] px-3 text-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder';
 
   const renderField = (
-    fieldName: 'firstName' | 'lastName' | 'email' | 'message',
+    fieldName: 'firstName' | 'lastName' | 'email' | 'message'
   ) => {
     const field = HOME_CONTACT.fields[fieldName];
     const isTextarea = fieldName === 'message';
@@ -66,9 +68,12 @@ export function ContactSection() {
             placeholder={field.placeholder}
             value={formData[fieldName]}
             onChange={handleChange}
-            className={`${inputClasses} h-[160px] py-3 resize-none`}
+            className={`${inputClasses} h-[160px] resize-none py-3`}
             {...(errorMsg
-              ? { 'aria-describedby': `${fieldName}-error`, 'aria-invalid': true as const }
+              ? {
+                  'aria-describedby': `${fieldName}-error`,
+                  'aria-invalid': true as const,
+                }
               : {})}
           />
         ) : (
@@ -81,12 +86,18 @@ export function ContactSection() {
             onChange={handleChange}
             className={inputClasses}
             {...(errorMsg
-              ? { 'aria-describedby': `${fieldName}-error`, 'aria-invalid': true as const }
+              ? {
+                  'aria-describedby': `${fieldName}-error`,
+                  'aria-invalid': true as const,
+                }
               : {})}
           />
         )}
         {errorMsg && (
-          <p id={`${fieldName}-error`} className="text-sm text-destructive mt-1">
+          <p
+            id={`${fieldName}-error`}
+            className="text-destructive mt-1 text-sm"
+          >
             {errorMsg}
           </p>
         )}
@@ -96,9 +107,9 @@ export function ContactSection() {
 
   return (
     <section>
-      <div className="max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
+      <div className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
         <div className="bg-surface rounded-lg p-[var(--section-padding)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Left column */}
             <div>
               <p className="text-overline text-muted-label">
@@ -139,7 +150,7 @@ export function ContactSection() {
                     variant="submit"
                     size="lg"
                     type="submit"
-                    className="w-full mt-4"
+                    className="mt-4 w-full"
                   >
                     {HOME_CONTACT.submitLabel}
                   </CTAButton>

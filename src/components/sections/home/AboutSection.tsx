@@ -7,16 +7,19 @@ export function AboutSection() {
   const paragraphs = body.split('\n');
 
   return (
-    <section className="max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
-      <AnimatedSection as="div" className="bg-surface rounded-2xl p-[var(--section-padding)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+      <AnimatedSection
+        as="div"
+        className="bg-surface rounded-2xl p-[var(--section-padding)]"
+      >
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div>
             <Image
               src="/images/team-photo.png"
               alt="Oona.works team"
               width={367}
               height={408}
-              className="rounded-2xl w-full h-auto"
+              className="h-auto w-full rounded-2xl"
             />
           </div>
           <div>

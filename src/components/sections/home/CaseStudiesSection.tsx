@@ -11,17 +11,17 @@ export function CaseStudiesSection() {
   const { title, articles } = HOME_CASE_STUDIES;
 
   return (
-    <section className="max-w-[var(--content-max)] mx-auto px-4 py-16 md:py-24">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
       <div className="bg-surface rounded-2xl p-[var(--section-padding)]">
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8 flex items-center justify-between">
           <h2 className="text-h3 text-foreground">{title}</h2>
-          <div className="size-16 rounded-full border border-border flex items-center justify-center">
+          <div className="border-border flex size-16 items-center justify-center rounded-full border">
             <ArrowUpRight size={32} />
           </div>
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-3"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -34,13 +34,13 @@ export function CaseStudiesSection() {
               whileHover={scaleOnHover}
             >
               <Link href={article.href}>
-                <div className="bg-surface border border-border rounded-md overflow-hidden">
+                <div className="bg-surface border-border overflow-hidden rounded-md border">
                   <Image
                     src={article.image}
                     alt={article.title}
                     width={330}
                     height={220}
-                    className="w-full h-auto"
+                    className="h-auto w-full"
                   />
                   <p className="text-card-heading text-foreground px-8 py-6">
                     {article.title}
