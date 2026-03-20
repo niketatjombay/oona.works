@@ -8,7 +8,7 @@ export function StatsSection() {
   const { heading, subtitle, ctaLabel, ctaHref, stats } = HOME_STATS;
 
   return (
-    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <AnimatedSection as="div">
         <div className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

@@ -11,7 +11,7 @@ export function UseCasePlatform() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <SectionHeader
         title={HOME_PLATFORM.title}
         subtitle={HOME_PLATFORM.subtitle}

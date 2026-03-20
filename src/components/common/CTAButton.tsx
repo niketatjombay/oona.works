@@ -13,7 +13,7 @@ const ctaButtonVariants = cva(
       variant: {
         primary: 'bg-primary text-primary-foreground rounded-lg',
         secondary: 'bg-secondary text-secondary-foreground rounded-2xl',
-        dark: 'bg-foreground text-primary-foreground rounded-2xl',
+        dark: 'bg-foreground text-primary-foreground rounded-2xl font-[family-name:var(--oona-font-ui)]',
         submit: 'bg-primary text-primary-foreground rounded-full',
       },
       size: {

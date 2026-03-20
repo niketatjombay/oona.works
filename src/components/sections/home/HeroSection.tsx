@@ -17,7 +17,7 @@ export function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="bg-background pt-[180px] pb-16 md:pb-24">
+    <section className="bg-background pt-[180px] pb-[var(--section-padding)] md:pb-[var(--section-padding-lg)]">
       <div className="mx-auto max-w-[var(--content-max)] px-4">
         <div className="flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-between">
           {/* Left column */}

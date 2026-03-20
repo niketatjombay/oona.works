@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AnimatedSection } from '@/components/animations';
 import { CASE_STUDY_ORDER } from '@/content/case-studies';
+import { NEXT_CASE_STUDY_LABEL } from '@/lib/constants';
 
 interface NextCaseStudyProps {
   currentSlug: string;
@@ -20,7 +21,9 @@ export function NextCaseStudy({ currentSlug }: NextCaseStudyProps) {
       as="div"
       className="mx-auto max-w-[var(--content-max)] px-4 py-12"
     >
-      <p className="text-overline text-muted-label mb-4">Next Case Study</p>
+      <p className="text-overline text-muted-label mb-4">
+        {NEXT_CASE_STUDY_LABEL}
+      </p>
       <Link href={`/case-studies/${next.slug}`}>
         <div className="bg-surface border-border flex items-center gap-6 overflow-hidden rounded-2xl border p-6 transition-shadow hover:shadow-lg">
           <Image

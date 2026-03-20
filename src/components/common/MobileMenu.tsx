@@ -76,7 +76,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <button
               ref={closeButtonRef}
               onClick={onClose}
-              className="absolute top-6 right-6 flex size-12 items-center justify-center text-primary-foreground"
+              className="text-primary-foreground absolute top-6 right-6 flex size-12 items-center justify-center"
               aria-label="Close menu"
             >
               <X size={24} />
@@ -126,7 +126,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="absolute top-6 right-6 flex size-12 items-center justify-center text-primary-foreground"
+            className="text-primary-foreground absolute top-6 right-6 flex size-12 items-center justify-center"
             aria-label="Close menu"
           >
             <X size={24} />

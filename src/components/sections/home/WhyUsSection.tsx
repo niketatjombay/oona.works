@@ -7,7 +7,7 @@ export function WhyUsSection() {
   const { title, subtitle, cards, securityCta } = HOME_WHY_US;
 
   return (
-    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <SectionHeader
         title={title}
         subtitle={subtitle}
@@ -26,12 +26,14 @@ export function WhyUsSection() {
             as="div"
             variant={staggerItem}
             delay={index * 0.1}
-            className={`border-surface rounded-md border p-6 ${
+            className={`border-surface rounded-md border p-6 md:p-[var(--card-padding-lg)] ${
               index === 1 ? 'bg-secondary' : 'bg-secondary-light'
             }`}
           >
             <p className="text-body-lg">
-              {card.prefix && <span className="text-muted-foreground">{card.prefix}</span>}
+              {card.prefix && (
+                <span className="text-muted-foreground">{card.prefix}</span>
+              )}
               <span className="text-foreground font-semibold">{card.bold}</span>
               <span className="text-muted-foreground">{card.rest}</span>
             </p>

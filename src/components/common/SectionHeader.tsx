@@ -36,9 +36,15 @@ export function SectionHeader({
       {overline && (
         <span className="text-overline text-muted-label mb-2">{overline}</span>
       )}
-      <h2 className={cn(titleClasses[titleSize], 'text-foreground')}>
-        {title}
-      </h2>
+      {titleSize === 'h2' && (
+        <h2 className={cn(titleClasses.h2, 'text-foreground')}>{title}</h2>
+      )}
+      {titleSize === 'h3' && (
+        <h3 className={cn(titleClasses.h3, 'text-foreground')}>{title}</h3>
+      )}
+      {titleSize === 'h4' && (
+        <h4 className={cn(titleClasses.h4, 'text-foreground')}>{title}</h4>
+      )}
       {subtitle && (
         <p className="text-body-lg text-foreground mt-4">{subtitle}</p>
       )}

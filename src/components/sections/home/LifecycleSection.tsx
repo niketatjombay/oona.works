@@ -11,7 +11,7 @@ export function LifecycleSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <SectionHeader
         title={HOME_LIFECYCLE.title}
         subtitle={HOME_LIFECYCLE.subtitle}
@@ -30,7 +30,7 @@ export function LifecycleSection() {
                 const cardContent = (
                   <div
                     key={cardIndex}
-                    className="bg-surface relative rounded-sm p-6"
+                    className="bg-surface relative rounded-sm p-6 md:p-[var(--card-padding-lg)]"
                   >
                     <div className="border-border absolute top-6 right-6 flex h-[44px] w-[44px] items-center justify-center rounded-full border">
                       <ArrowUpRight className="text-foreground h-5 w-5" />
@@ -81,7 +81,7 @@ export function LifecycleSection() {
                 const cardContent = (
                   <motion.div
                     key={cardIndex}
-                    className="bg-surface relative rounded-sm p-6"
+                    className="bg-surface relative rounded-sm p-6 md:p-[var(--card-padding-lg)]"
                     variants={staggerItem}
                     whileHover={scaleOnHover}
                   >

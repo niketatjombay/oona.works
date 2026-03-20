@@ -42,7 +42,6 @@ export function SharedContactSection() {
       return;
     }
 
-    console.log('Form submitted:', formData);
     setIsSubmitted(true);
   };
 
@@ -107,7 +106,7 @@ export function SharedContactSection() {
 
   return (
     <section>
-      <div className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+      <div className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
         <div className="bg-surface rounded-lg p-6 md:p-[var(--section-padding)]">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Left column */}

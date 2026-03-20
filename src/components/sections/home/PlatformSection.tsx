@@ -5,7 +5,7 @@ import { AnimatedSection } from '@/components/animations';
 
 export function PlatformSection() {
   return (
-    <section className="relative mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <section className="relative mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <Image
         src="/images/accent-shape.svg"
         alt=""

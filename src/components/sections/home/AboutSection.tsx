@@ -7,7 +7,7 @@ export function AboutSection() {
   const paragraphs = body.split('\n');
 
   return (
-    <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <section className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <AnimatedSection
         as="div"
         className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]"

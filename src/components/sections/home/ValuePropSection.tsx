@@ -45,7 +45,7 @@ export function ValuePropSection() {
   const { leftCard, rightCard } = HOME_VALUE_PROP;
 
   return (
-    <div className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
+    <div className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Left Card */}
         <AnimatedSection
@@ -78,7 +78,7 @@ export function ValuePropSection() {
                 line === '' ? (
                   <br key={i} />
                 ) : (
-                  <p key={i} className="text-body-sm text-placeholder">
+                  <p key={i} className="text-body-sm text-muted-foreground">
                     {line}
                   </p>
                 )

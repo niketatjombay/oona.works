@@ -38,3 +38,4 @@ export const SITE_CONFIG: SiteConfig = {
 
 export const CONTACT_EMAIL = 'oona@oona.works';
 export const CONTACT_CTA_LABEL = 'Contact Us ~ Email';
+export const NEXT_CASE_STUDY_LABEL = 'Next Case Study';
