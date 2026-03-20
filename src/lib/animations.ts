@@ -1,4 +1,4 @@
-import type { Variants, TargetAndTransition } from 'framer-motion';
+import type { Variants, TargetAndTransition, Easing } from 'framer-motion';
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -73,11 +73,11 @@ export const scaleOnHover: TargetAndTransition = {
 
 // Perpetual floating animation for screenshots/images.
 // Use with motion.div animate={floatingLoop} (not variants/whileInView).
-export const floatingLoop = {
+export const floatingLoop: TargetAndTransition = {
   y: [0, -8, 0],
   transition: {
     duration: 3,
-    ease: 'easeInOut',
+    ease: 'easeInOut' as Easing,
     repeat: Infinity,
     repeatType: 'loop' as const,
   },
