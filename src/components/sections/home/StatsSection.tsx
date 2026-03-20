@@ -31,19 +31,23 @@ export function StatsSection() {
             </div>
 
             {/* Right column — 2x2 stats grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               {stats.slice(0, 2).map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-[28px] leading-[36px] md:text-display text-foreground">{stat.label}</p>
+                  <p className="md:text-display text-foreground text-[28px] leading-[36px]">
+                    {stat.label}
+                  </p>
                   <p className="text-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>
                 </div>
               ))}
-              <div className="bg-border col-span-1 sm:col-span-2 h-px" />
+              <div className="bg-border col-span-1 h-px sm:col-span-2" />
               {stats.slice(2, 4).map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-[28px] leading-[36px] md:text-display text-foreground">{stat.label}</p>
+                  <p className="md:text-display text-foreground text-[28px] leading-[36px]">
+                    {stat.label}
+                  </p>
                   <p className="text-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>

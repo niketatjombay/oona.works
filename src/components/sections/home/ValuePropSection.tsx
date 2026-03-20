@@ -50,7 +50,9 @@ export function ValuePropSection() {
         {/* Left Card */}
         <AnimatedSection
           as="div"
-          className={cn('bg-surface rounded-xl p-6 md:p-[var(--section-padding)]')}
+          className={cn(
+            'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
+          )}
         >
           <h3 className="text-h3 text-foreground">{leftCard.title}</h3>
           <div className="text-body-lg text-foreground mt-8">
@@ -62,7 +64,9 @@ export function ValuePropSection() {
         <AnimatedSection
           as="div"
           delay={0.1}
-          className={cn('bg-surface rounded-xl p-6 md:p-[var(--section-padding)]')}
+          className={cn(
+            'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
+          )}
         >
           <h3 className="text-h3 text-foreground">{rightCard.title}</h3>
           <div className="mt-4">

@@ -48,7 +48,9 @@ export function HeroSection() {
               <div className="mt-6">
                 {headlineLines.map((line) => (
                   <div key={line}>
-                    <h1 className="text-[36px] leading-[44px] tracking-[-1px] md:text-h1 text-foreground">{line}</h1>
+                    <h1 className="md:text-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
+                      {line}
+                    </h1>
                   </div>
                 ))}
               </div>
@@ -61,7 +63,9 @@ export function HeroSection() {
               >
                 {headlineLines.map((line) => (
                   <motion.div key={line} variants={staggerItem}>
-                    <h1 className="text-[36px] leading-[44px] tracking-[-1px] md:text-h1 text-foreground">{line}</h1>
+                    <h1 className="md:text-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
+                      {line}
+                    </h1>
                   </motion.div>
                 ))}
               </motion.div>
@@ -97,7 +101,7 @@ export function HeroSection() {
                 alt="Hero illustration"
                 width={464}
                 height={484}
-                className="w-full h-auto rounded-2xl"
+                className="h-auto w-full rounded-2xl"
               />
             </div>
           ) : (
@@ -112,7 +116,7 @@ export function HeroSection() {
                 alt="Hero illustration"
                 width={464}
                 height={484}
-                className="w-full h-auto rounded-2xl"
+                className="h-auto w-full rounded-2xl"
               />
             </motion.div>
           )}
