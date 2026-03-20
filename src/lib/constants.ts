@@ -1,8 +1,25 @@
 import type { NavItem, SiteConfig } from '@/types';
 
+export const ROUTES = {
+  home: '/',
+  caseStudies: {
+    talentIntelligence: '/case-studies/talent-intelligence',
+    performanceManagement: '/case-studies/performance-management',
+    learningContent: '/case-studies/learning-content',
+  },
+  useCases: {
+    workforce: '/use-cases/workforce',
+    performance: '/use-cases/performance',
+    learning: '/use-cases/learning',
+    recruitment: '/use-cases/recruitment',
+  },
+  enterpriseSecurity: '/enterprise-security',
+  contact: 'mailto:oona@oona.works',
+} as const;
+
 export const NAV_LINKS: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Home', href: ROUTES.home },
+  { label: 'Case Studies', href: ROUTES.caseStudies.talentIntelligence },
 ];
 
 export const FOOTER_DATA = {
