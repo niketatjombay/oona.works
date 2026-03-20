@@ -20,7 +20,7 @@ export function PlatformSection() {
         titleSize="h4"
         align="center"
       />
-      <AnimatedSection as="div" delay={0.2} className="mt-8 w-full">
+      <AnimatedSection as="div" delay={0.2} className="mt-12 w-full">
         <Image
           src="/images/platform-overview.png"
           alt="Platform overview"

@@ -90,7 +90,7 @@ export function Navbar({ className }: NavbarProps) {
                           openDropdown === link.label ? null : link.label
                         )
                       }
-                      className="typo-nav text-nav-text rounded-pill hover:bg-muted flex items-center gap-1 px-4 py-2 transition-colors"
+                      className="typo-nav text-nav-text rounded-pill hover:bg-muted focus-visible:ring-primary flex items-center gap-1 px-4 py-2 transition-colors focus-visible:ring-2 focus-visible:outline-none"
                       aria-expanded={openDropdown === link.label}
                       aria-haspopup="true"
                     >
@@ -137,7 +137,7 @@ export function Navbar({ className }: NavbarProps) {
           {/* Menu button — hidden on desktop where nav links are visible */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="rounded-pill hover:bg-muted flex size-10 items-center justify-center transition-colors md:hidden"
+            className="rounded-pill hover:bg-muted focus-visible:ring-primary flex size-10 items-center justify-center transition-colors focus-visible:ring-2 focus-visible:outline-none md:hidden"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
           >

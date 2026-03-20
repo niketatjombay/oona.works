@@ -77,7 +77,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <button
           ref={closeButtonRef}
           onClick={onClose}
-          className="bg-muted hover:bg-border flex size-10 items-center justify-center rounded-full transition-colors"
+          className="bg-muted hover:bg-border focus-visible:ring-primary flex size-10 items-center justify-center rounded-full transition-colors focus-visible:ring-2 focus-visible:outline-none"
           aria-label="Close menu"
         >
           <X size={20} className="text-foreground" />

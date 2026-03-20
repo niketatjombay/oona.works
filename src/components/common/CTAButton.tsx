@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { scaleOnHover } from '@/lib/animations';
 
 const ctaButtonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap transition-colors select-none',
+  'inline-flex items-center justify-center whitespace-nowrap transition-colors select-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none',
   {
     variants: {
       variant: {

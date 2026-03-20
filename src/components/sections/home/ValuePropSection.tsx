@@ -69,7 +69,7 @@ export function ValuePropSection() {
           )}
         >
           <h3 className="typo-h3 text-foreground">{rightCard.title}</h3>
-          <div className="mt-4">
+          <div className="mt-8">
             <RightCardBody body={rightCard.body} />
           </div>
           {rightCard.governance && (

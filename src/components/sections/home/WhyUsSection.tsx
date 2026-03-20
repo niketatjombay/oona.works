@@ -26,7 +26,7 @@ export function WhyUsSection() {
             as="div"
             variant={staggerItem}
             delay={index * 0.1}
-            className={`border-surface rounded-md border p-6 md:p-[var(--card-padding-lg)] ${
+            className={`border-border rounded-md border p-6 md:p-[var(--card-padding-lg)] ${
               index === 1 ? 'bg-secondary' : 'bg-secondary-light'
             }`}
           >

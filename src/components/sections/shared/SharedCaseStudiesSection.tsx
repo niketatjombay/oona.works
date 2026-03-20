@@ -24,7 +24,10 @@ export function SharedCaseStudiesSection() {
         {shouldReduceMotion ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {articles.map((article) => (
-              <div key={article.href}>
+              <div
+                key={article.href}
+                className="transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              >
                 <Link href={article.href}>
                   <div className="bg-surface border-border overflow-hidden rounded-md border">
                     <Image

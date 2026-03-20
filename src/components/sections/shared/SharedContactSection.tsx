@@ -46,7 +46,7 @@ export function SharedContactSection() {
   };
 
   const inputClasses =
-    'bg-surface border border-border rounded-sm h-[56px] px-3 typo-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder';
+    'bg-surface border border-border rounded-sm h-[56px] px-3 typo-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder transition-shadow duration-200';
 
   const renderField = (
     fieldName: 'firstName' | 'lastName' | 'email' | 'message'
