@@ -79,6 +79,22 @@ export interface SiteConfig {
   };
 }
 
+export interface EnterpriseSecurityContent {
+  metadata: { title: string; description: string };
+  banner: {
+    badge: string;
+    title: string;
+    heroImage: string;
+    heroImageAlt: string;
+  };
+  body: string;
+  whyTitle: string;
+  whyText: string;
+  quote: string;
+  pillarsTitle: string;
+  pillars: { title: string; description: string }[];
+}
+
 export type UseCaseStat = {
   type: 'static';
   display: string;

@@ -1,17 +1,27 @@
 import type { Metadata } from 'next';
+import { PageLayout } from '@/components/layouts';
+import { SecurityContent, SecurityPillars } from '@/components/sections/enterprise';
+import { HighlightQuote } from '@/components/sections/shared';
+import { ENTERPRISE_SECURITY } from '@/content/pages/enterprise-security';
+
+const data = ENTERPRISE_SECURITY;
 
 export const metadata: Metadata = {
-  title: 'Enterprise Grade Security — Oona.Works',
-  description: 'Enterprise Grade Security',
+  title: `${data.metadata.title} — Oona.Works`,
+  description: data.metadata.description,
 };
 
-export default function EnterpradeGradeSecurity() {
+export default function EnterpriseSecurityPage() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center pt-[132px]">
-      <div className="text-center">
-        <h1 className="text-h3 text-foreground">Enterprise Grade Security</h1>
-        <p className="text-body-lg text-muted-foreground mt-4">Coming soon</p>
-      </div>
-    </div>
+    <PageLayout
+      badge={data.banner.badge}
+      title={data.banner.title}
+      heroImage={data.banner.heroImage}
+      heroImageAlt={data.banner.heroImageAlt}
+    >
+      <SecurityContent body={data.body} whyTitle={data.whyTitle} whyText={data.whyText} />
+      <HighlightQuote text={data.quote} />
+      <SecurityPillars title={data.pillarsTitle} pillars={data.pillars} />
+    </PageLayout>
   );
 }
