@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Navbar } from '@/components/common/Navbar';
 import { Footer } from '@/components/common/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import { PageTransitionWrapper } from '@/components/animations';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -57,7 +58,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransitionWrapper>{children}</PageTransitionWrapper>
+        </main>
         <Footer />
         <Analytics />
       </body>
