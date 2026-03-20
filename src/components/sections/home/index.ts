@@ -1,0 +1,9 @@
+export { HeroSection } from './HeroSection';
+export { ValuePropSection } from './ValuePropSection';
+export { PlatformSection } from './PlatformSection';
+export { LifecycleSection } from './LifecycleSection';
+export { StatsSection } from './StatsSection';
+export { WhyUsSection } from './WhyUsSection';
+export { CaseStudiesSection } from './CaseStudiesSection';
+export { AboutSection } from './AboutSection';
+export { ContactSection } from './ContactSection';

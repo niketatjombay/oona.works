@@ -1,2 +1,1 @@
-// Page-specific section components
-export {};
+export * from './home';
