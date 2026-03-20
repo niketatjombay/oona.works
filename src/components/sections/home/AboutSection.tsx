@@ -10,7 +10,7 @@ export function AboutSection() {
     <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
       <AnimatedSection
         as="div"
-        className="bg-surface rounded-2xl p-[var(--section-padding)]"
+        className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]"
       >
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           <div>

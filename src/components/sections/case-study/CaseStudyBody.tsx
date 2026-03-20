@@ -17,7 +17,7 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <AnimatedSection
           as="div"
-          className="bg-surface rounded-xl p-[var(--section-padding)]"
+          className="bg-surface rounded-xl p-6 md:p-[var(--section-padding)]"
         >
           <h3 className="text-h3 text-foreground mb-6">{howItWorks.title}</h3>
           <ul className="space-y-4">
@@ -36,7 +36,7 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
 
         <AnimatedSection
           as="div"
-          className="bg-surface rounded-xl p-[var(--section-padding)]"
+          className="bg-surface rounded-xl p-6 md:p-[var(--section-padding)]"
           delay={0.1}
         >
           <h3 className="text-h3 text-foreground mb-6">{outcomes.title}</h3>

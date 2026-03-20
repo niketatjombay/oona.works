@@ -13,7 +13,7 @@ export function SharedCaseStudiesSection() {
 
   return (
     <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
-      <div className="bg-surface rounded-2xl p-[var(--section-padding)]">
+      <div className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-h3 text-foreground">{title}</h2>
           <div className="border-border flex size-16 items-center justify-center rounded-full border">

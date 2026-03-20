@@ -108,7 +108,7 @@ export function SharedContactSection() {
   return (
     <section>
       <div className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
-        <div className="bg-surface rounded-lg p-[var(--section-padding)]">
+        <div className="bg-surface rounded-lg p-6 md:p-[var(--section-padding)]">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Left column */}
             <div>
@@ -140,7 +140,7 @@ export function SharedContactSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {renderField('firstName')}
                     {renderField('lastName')}
                   </div>

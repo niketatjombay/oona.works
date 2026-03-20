@@ -10,7 +10,7 @@ export function StatsSection() {
   return (
     <section className="mx-auto max-w-[var(--content-max)] px-4 py-16 md:py-24">
       <AnimatedSection as="div">
-        <div className="bg-surface rounded-2xl p-[var(--section-padding)]">
+        <div className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {/* Left column */}
             <div>
@@ -31,19 +31,19 @@ export function StatsSection() {
             </div>
 
             {/* Right column — 2x2 stats grid */}
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {stats.slice(0, 2).map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-display text-foreground">{stat.label}</p>
+                  <p className="text-[28px] leading-[36px] md:text-display text-foreground">{stat.label}</p>
                   <p className="text-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>
                 </div>
               ))}
-              <div className="bg-border col-span-2 h-px" />
+              <div className="bg-border col-span-1 sm:col-span-2 h-px" />
               {stats.slice(2, 4).map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-display text-foreground">{stat.label}</p>
+                  <p className="text-[28px] leading-[36px] md:text-display text-foreground">{stat.label}</p>
                   <p className="text-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>
