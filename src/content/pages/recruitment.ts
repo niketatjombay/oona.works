@@ -23,15 +23,17 @@ export const RECRUITMENT: UseCaseContent = {
   },
   stats: [
     {
-      type: 'static',
-      display: '70-75%',
+      type: 'animated',
+      value: 70,
+      suffix: '-75%',
       label: 'Reduction in time to screen candidates',
     },
     {
-      type: 'static',
-      display: '40-60hrs',
+      type: 'animated',
+      value: 40,
+      suffix: '-60hrs',
       label: 'of recruiter time saved monthly',
     },
-    { type: 'static', display: '30-40%', label: 'Reduction in time to hire' },
+    { type: 'animated', value: 30, suffix: '-40%', label: 'Reduction in time to hire' },
   ],
 };

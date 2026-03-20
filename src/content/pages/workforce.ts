@@ -23,14 +23,16 @@ export const WORKFORCE: UseCaseContent = {
   },
   stats: [
     {
-      type: 'static',
-      display: '60-70%',
+      type: 'animated',
+      value: 60,
+      suffix: '-70%',
       label: 'Reduced time spent on analysis',
     },
-    { type: 'static', display: '40-60 hrs', label: 'saved per month' },
+    { type: 'animated', value: 40, suffix: '-60 hrs', label: 'saved per month' },
     {
-      type: 'static',
-      display: '20-35%',
+      type: 'animated',
+      value: 20,
+      suffix: '-35%',
       label: 'Increase in internal role fulfilment',
     },
     { type: 'static', display: 'Faster', label: 'Talent deployment' },

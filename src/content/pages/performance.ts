@@ -23,18 +23,21 @@ export const PERFORMANCE: UseCaseContent = {
   },
   stats: [
     {
-      type: 'static',
-      display: '50-60%',
+      type: 'animated',
+      value: 50,
+      suffix: '-60%',
       label: 'Reduced in time spent on performance review prep',
     },
     {
-      type: 'static',
-      display: '15-20%',
+      type: 'animated',
+      value: 15,
+      suffix: '-20%',
       label: 'Improvement in goal alignment',
     },
     {
-      type: 'static',
-      display: '20-30%',
+      type: 'animated',
+      value: 20,
+      suffix: '-30%',
       label: 'Improvement in quality of feedback',
     },
   ],

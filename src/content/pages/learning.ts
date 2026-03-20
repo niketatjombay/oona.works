@@ -23,18 +23,21 @@ export const LEARNING: UseCaseContent = {
   },
   stats: [
     {
-      type: 'static',
-      display: '70-90%',
+      type: 'animated',
+      value: 70,
+      suffix: '-90%',
       label: 'Reduction in learning content creation time',
     },
     {
-      type: 'static',
-      display: '5-10X',
+      type: 'animated',
+      value: 5,
+      suffix: '-10X',
       label: 'Faster training content generation',
     },
     {
-      type: 'static',
-      display: '30-50%',
+      type: 'animated',
+      value: 30,
+      suffix: '-50%',
       label: 'Acceleration in Skill Acquisition',
     },
   ],
