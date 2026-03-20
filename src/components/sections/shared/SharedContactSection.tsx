@@ -46,7 +46,7 @@ export function SharedContactSection() {
   };
 
   const inputClasses =
-    'bg-surface border border-border rounded-sm h-[56px] px-3 typo-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder transition-shadow duration-200';
+    'bg-surface border border-border rounded-[8px] h-[56px] px-3 typo-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder transition-shadow duration-200';
 
   const renderField = (
     fieldName: 'firstName' | 'lastName' | 'email' | 'message'
@@ -107,7 +107,7 @@ export function SharedContactSection() {
   return (
     <section>
       <div className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
-        <div className="bg-surface rounded-lg p-6 md:p-[var(--section-padding)]">
+        <div className="bg-surface rounded-[16px] p-6 md:p-[var(--section-padding)]">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Left column */}
             <div>

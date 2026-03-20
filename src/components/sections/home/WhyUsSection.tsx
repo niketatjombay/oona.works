@@ -26,7 +26,7 @@ export function WhyUsSection() {
             as="div"
             variant={staggerItem}
             delay={index * 0.1}
-            className={`border-border rounded-md border p-6 md:p-[var(--card-padding-lg)] ${
+            className={`border-border rounded-[12px] border p-6 md:p-[var(--card-padding-lg)] ${
               index === 1 ? 'bg-secondary' : 'bg-secondary-light'
             }`}
           >
@@ -42,7 +42,7 @@ export function WhyUsSection() {
       </AnimatedSection>
 
       <div className="mt-8 flex justify-center">
-        <CTAButton variant="primary" href={securityCta.href}>
+        <CTAButton variant="submit" size="lg" href={securityCta.href}>
           {securityCta.label}
         </CTAButton>
       </div>

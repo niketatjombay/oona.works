@@ -24,13 +24,13 @@ export function LifecycleSection() {
           {HOME_LIFECYCLE.columns.map((column, colIndex) => (
             <div
               key={colIndex}
-              className="bg-background flex flex-col gap-4 rounded-md"
+              className="bg-background flex flex-col gap-4 rounded-[8px]"
             >
               {column.cards.map((card, cardIndex) => {
                 const cardContent = (
                   <div
                     key={cardIndex}
-                    className="bg-surface relative rounded-sm p-6 transition-shadow duration-200 hover:shadow-md md:p-[var(--card-padding-lg)]"
+                    className="bg-surface relative rounded-[8px] p-6 transition-shadow duration-200 hover:shadow-md md:p-[var(--card-padding-lg)]"
                   >
                     <div className="border-border absolute top-6 right-6 flex h-[44px] w-[44px] items-center justify-center rounded-full border">
                       <ArrowUpRight className="text-foreground h-5 w-5" />
@@ -75,13 +75,13 @@ export function LifecycleSection() {
           {HOME_LIFECYCLE.columns.map((column, colIndex) => (
             <div
               key={colIndex}
-              className="bg-background flex flex-col gap-4 rounded-md"
+              className="bg-background flex flex-col gap-4 rounded-[8px]"
             >
               {column.cards.map((card, cardIndex) => {
                 const cardContent = (
                   <motion.div
                     key={cardIndex}
-                    className="bg-surface relative rounded-sm p-6 md:p-[var(--card-padding-lg)]"
+                    className="bg-surface relative rounded-[8px] p-6 md:p-[var(--card-padding-lg)]"
                     variants={staggerItem}
                     whileHover={scaleOnHover}
                   >

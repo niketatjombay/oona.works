@@ -29,7 +29,7 @@ export function SharedCaseStudiesSection() {
                 className="transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
               >
                 <Link href={article.href}>
-                  <div className="bg-surface border-border overflow-hidden rounded-md border">
+                  <div className="bg-surface border-border overflow-hidden rounded-[12px] border">
                     <Image
                       src={article.image}
                       alt={article.title}
@@ -60,7 +60,7 @@ export function SharedCaseStudiesSection() {
                 whileHover={scaleOnHover}
               >
                 <Link href={article.href}>
-                  <div className="bg-surface border-border overflow-hidden rounded-md border">
+                  <div className="bg-surface border-border overflow-hidden rounded-[12px] border">
                     <Image
                       src={article.image}
                       alt={article.title}

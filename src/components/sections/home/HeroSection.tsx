@@ -74,7 +74,11 @@ export function HeroSection() {
             {/* CTA */}
             {shouldReduceMotion ? (
               <div className="mt-8">
-                <CTAButton variant="primary" href={HOME_HERO.ctaHref}>
+                <CTAButton
+                  variant="primary"
+                  size="hero"
+                  href={HOME_HERO.ctaHref}
+                >
                   {HOME_HERO.ctaLabel}
                 </CTAButton>
               </div>
@@ -86,7 +90,11 @@ export function HeroSection() {
                 transition={{ delay: 0.4 }}
                 className="mt-8"
               >
-                <CTAButton variant="primary" href={HOME_HERO.ctaHref}>
+                <CTAButton
+                  variant="primary"
+                  size="hero"
+                  href={HOME_HERO.ctaHref}
+                >
                   {HOME_HERO.ctaLabel}
                 </CTAButton>
               </motion.div>
@@ -101,7 +109,7 @@ export function HeroSection() {
                 alt="Hero illustration"
                 width={464}
                 height={484}
-                className="h-auto w-full rounded-2xl"
+                className="h-auto w-full rounded-[24px]"
               />
             </div>
           ) : (
@@ -116,7 +124,7 @@ export function HeroSection() {
                 alt="Hero illustration"
                 width={464}
                 height={484}
-                className="h-auto w-full rounded-2xl"
+                className="h-auto w-full rounded-[24px]"
               />
             </motion.div>
           )}

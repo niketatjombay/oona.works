@@ -17,9 +17,10 @@ const ctaButtonVariants = cva(
         submit: 'bg-primary rounded-full text-primary-foreground',
       },
       size: {
-        sm: 'h-[40px] px-4 typo-nav',
+        sm: 'h-[50px] px-4 typo-nav',
         default: 'h-[50px] px-6 typo-button',
         lg: 'h-[60px] px-8 typo-button',
+        hero: 'h-[69px] w-[150px] typo-button-lg',
       },
     },
     defaultVariants: {

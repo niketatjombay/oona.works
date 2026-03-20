@@ -26,7 +26,7 @@ export function PlatformSection() {
           alt="Platform overview"
           width={1380}
           height={512}
-          className="w-full rounded-2xl"
+          className="w-full rounded-[24px]"
         />
       </AnimatedSection>
     </section>

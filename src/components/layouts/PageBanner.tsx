@@ -37,7 +37,7 @@ export function PageBanner({
 
               {/* Badge pill */}
               <div className="mt-8">
-                <span className="typo-overline text-muted-label border-border inline-flex items-center rounded-full border px-4 py-1">
+                <span className="typo-overline text-muted-label border-border inline-flex items-center rounded-full border px-4 py-1.5">
                   {badge}
                 </span>
               </div>

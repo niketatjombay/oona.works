@@ -24,7 +24,7 @@ export function AboutSection() {
           </div>
           <div>
             <h3 className="typo-h3 text-foreground">{title}</h3>
-            <div className="typo-body-lg text-foreground mt-4">
+            <div className="typo-body-lg text-foreground mt-4 font-medium">
               {paragraphs.map((paragraph, index) =>
                 paragraph ? (
                   <p key={index} className={index > 0 ? 'mt-4' : ''}>

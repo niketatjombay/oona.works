@@ -51,7 +51,7 @@ export function ValuePropSection() {
         <AnimatedSection
           as="div"
           className={cn(
-            'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
+            'bg-surface rounded-[20px] p-6 md:p-[var(--section-padding)]'
           )}
         >
           <h3 className="typo-h3 text-foreground">{leftCard.title}</h3>
@@ -65,7 +65,7 @@ export function ValuePropSection() {
           as="div"
           delay={0.1}
           className={cn(
-            'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
+            'bg-surface rounded-[16px] p-6 md:p-[var(--section-padding)]'
           )}
         >
           <h3 className="typo-h3 text-foreground">{rightCard.title}</h3>
