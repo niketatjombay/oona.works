@@ -4,6 +4,7 @@ import {
   CaseStudyProblem,
   CaseStudySummary,
   CaseStudyBody,
+  NextCaseStudy,
 } from '@/components/sections/case-study';
 import { HighlightQuote } from '@/components/sections/shared';
 import { LEARNING_CONTENT } from '@/content/case-studies';
@@ -27,6 +28,7 @@ export default function LearningContentPage() {
       <CaseStudySummary text={data.summary} />
       <CaseStudyBody howItWorks={data.howItWorks} outcomes={data.outcomes} />
       <HighlightQuote text={data.quote} />
+      <NextCaseStudy currentSlug="learning-content" />
     </PageLayout>
   );
 }

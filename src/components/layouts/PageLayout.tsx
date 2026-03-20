@@ -1,3 +1,4 @@
+import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { SharedCaseStudiesSection } from '@/components/sections/shared/SharedCaseStudiesSection';
 import { SharedContactSection } from '@/components/sections/shared/SharedContactSection';
 import { PageBanner } from './PageBanner';
@@ -21,6 +22,7 @@ export function PageLayout({
 }: PageLayoutProps) {
   return (
     <>
+      <ScrollProgress />
       <PageBanner
         badge={badge}
         title={title}

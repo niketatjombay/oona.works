@@ -4,6 +4,7 @@ import {
   CaseStudyProblem,
   CaseStudySummary,
   CaseStudyBody,
+  NextCaseStudy,
 } from '@/components/sections/case-study';
 import { HighlightQuote } from '@/components/sections/shared';
 import { PERFORMANCE_MANAGEMENT } from '@/content/case-studies';
@@ -27,6 +28,7 @@ export default function PerformanceManagementPage() {
       <CaseStudySummary text={data.summary} />
       <CaseStudyBody howItWorks={data.howItWorks} outcomes={data.outcomes} />
       <HighlightQuote text={data.quote} />
+      <NextCaseStudy currentSlug="performance-management" />
     </PageLayout>
   );
 }
