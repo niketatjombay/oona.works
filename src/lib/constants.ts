@@ -32,7 +32,7 @@ export const SITE_CONFIG: SiteConfig = {
   name: 'Oona.Works',
   description: 'Your AI Partner in HR Transformation',
   url: 'https://oona.works',
-  ogImage: '/og-image.png',
+  ogImage: '/images/og-image.png',
   links: {},
 };
 
