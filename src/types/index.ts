@@ -78,3 +78,32 @@ export interface SiteConfig {
     github?: string;
   };
 }
+
+export type UseCaseStat = {
+  type: 'static';
+  display: string;
+  label: string;
+} | {
+  type: 'animated';
+  value: number;
+  suffix?: string;
+  label: string;
+};
+
+export interface UseCaseContent {
+  metadata: { title: string; description: string };
+  banner: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    heroImage: string;
+    heroImageAlt: string;
+  };
+  dashboard: {
+    title: string;
+    subtitle: string;
+    image: string;
+    imageAlt: string;
+  };
+  stats: UseCaseStat[];
+}

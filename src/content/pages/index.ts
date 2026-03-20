@@ -1,2 +1,4 @@
-// Product page content: workforce, performance, learning, recruitment, security
-export {};
+export { WORKFORCE } from './workforce';
+export { PERFORMANCE } from './performance';
+export { LEARNING } from './learning';
+export { RECRUITMENT } from './recruitment';
