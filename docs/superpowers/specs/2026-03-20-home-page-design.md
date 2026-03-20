@@ -52,6 +52,8 @@ export const NAV_LINKS: NavItem[] = [
 ];
 ```
 
+**Note:** The current `NAV_LINKS` has `href: '/case-studies'` which has no index page. This update changes it to link directly to the first case study. No `/case-studies` index route is created in this sub-project.
+
 Additional route constants:
 
 ```typescript
@@ -84,7 +86,7 @@ export const ROUTES = {
 | `src/components/sections/home/ValuePropSection.tsx` | Two white cards side by side |
 | `src/components/sections/home/PlatformSection.tsx` | "HOW we do it" + screenshot |
 | `src/components/sections/home/LifecycleSection.tsx` | Product category cards |
-| `src/components/sections/home/StatsSection.tsx` | Value prop + animated counters |
+| `src/components/sections/home/StatsSection.tsx` | Value prop stats with scroll fade-in |
 | `src/components/sections/home/WhyUsSection.tsx` | Feature cards |
 | `src/components/sections/home/CaseStudiesSection.tsx` | Article cards |
 | `src/components/sections/home/AboutSection.tsx` | Team photo + text |
@@ -132,7 +134,7 @@ export const ROUTES = {
 
 **Mobile:** Stack vertically — headline + CTA above, image below (scaled down).
 
-### 2. ValuePropSection — Server component
+### 2. ValuePropSection — Server component (no `'use client'` directive; imports `AnimatedSection` as a client leaf)
 
 **Layout:** Two white cards side by side, equal width.
 
@@ -180,14 +182,14 @@ Cards link to their use-case pages via `next/link`. `scaleOnHover` on each card.
 **Left side:**
 - Heading in `text-h3 text-primary`: "How your $150K HR consulting project can become a $450K AI transformation engagement with oona.works"
 - Body: "Simply because we empower you to:" (`text-body-lg`)
-- CTAButton dark "Know More"
+- CTAButton dark "Know More" (`href={ROUTES.contact}` — scrolls to contact or opens mailto)
 
 **Right side:** 2×2 grid:
 - Row 1: "WIN" + "AI-led HR transformation mandates" | "COMPETE" + "with tech-first consulting firms"
 - Divider line (`bg-border`)
 - Row 2: "2-3X" + "INCREASE IN PROJECT VALUE" | "40–60% FASTER" + "delivery"
 
-Stats use `text-display` for the big number and `text-overline` for the label. The number values ("WIN", "COMPETE") are static text, not counters. "2-3X" and "40-60%" use `AnimatedCounter`.
+Stats use `text-display` for the big number and `text-overline` for the label. All four stats are static text — "WIN", "COMPETE", "2-3X", "40–60% FASTER" are display labels, not animated counters. (The range "40-60%" cannot be meaningfully animated with a single-number counter.) `AnimatedCounter` is not used here; these are wrapped in `AnimatedSection` for scroll-triggered fade-in instead.
 
 ### 6. WhyUsSection — Server component
 
@@ -262,7 +264,20 @@ Wraps in `AnimatedSection`. Mobile: stack vertically — image above, text below
 
 ### Content file (`src/content/home.ts`)
 
-All text extracted verbatim from Figma. Structured as typed exports:
+All text extracted verbatim from Figma. Typed interfaces defined at the top of the file (co-located with the data, not in `types/index.ts`, since these shapes are home-page-specific):
+
+```typescript
+interface HeroContent { headline: string; ctaLabel: string; ctaHref: string; }
+interface CardContent { title: string; body: string; governance?: string; }
+interface LifecycleCard { title: string; items: string[]; href?: string; }
+interface LifecycleColumn { cards: LifecycleCard[]; }
+interface StatItem { label: string; sublabel: string; }
+interface WhyUsCard { bold: string; prefix?: string; rest: string; }
+interface ArticleCard { title: string; image: string; href: string; }
+interface FormField { label: string; placeholder: string; }
+```
+
+Structured as typed exports:
 
 ```typescript
 export const HOME_HERO = {
@@ -336,11 +351,12 @@ export const HOME_STATS = {
   heading: 'How your $150K\nHR consulting project can become a $450K AI transformation engagement with oona.works',
   subtitle: 'Simply because we empower you to:',
   ctaLabel: 'Know More',
+  ctaHref: 'mailto:oona@oona.works',
   stats: [
-    { label: 'WIN', sublabel: 'AI-led HR transformation mandates', type: 'text' },
-    { label: 'COMPETE', sublabel: 'with tech-first consulting firms', type: 'text' },
-    { value: 2.5, suffix: 'X', label: 'INCREASE IN PROJECT VALUE', type: 'counter' },
-    { label: '40–60% FASTER', sublabel: 'delivery', type: 'text' },
+    { label: 'WIN', sublabel: 'AI-led HR transformation mandates' },
+    { label: 'COMPETE', sublabel: 'with tech-first consulting firms' },
+    { label: '2-3X', sublabel: 'INCREASE IN PROJECT VALUE' },
+    { label: '40–60% FASTER', sublabel: 'delivery' },
   ],
 };
 
