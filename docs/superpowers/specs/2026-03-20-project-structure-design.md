@@ -4,7 +4,7 @@
 
 Oona.Works is an enterprise HR tech product website targeting Silicon Valley companies (Series B+, 500+ employees). The audience is VP of HR, CHROs, and enterprise IT decision-makers. Design bar: Linear.app, Vercel.com, Stripe.com.
 
-The project is initialized with Next.js 16.2.0, React 19, TypeScript strict mode, Tailwind CSS 4, ESLint 9, and `@/*` path alias. This spec covers scaffolding the project structure, adding dependencies, and creating foundational utility code. No UI is built.
+The project is initialized with Next.js 16.2.0, React 19, TypeScript strict mode, Tailwind CSS 4, ESLint 9, and `@/*` path alias. Existing `postcss.config.mjs` with `@tailwindcss/postcss` must not be modified. This spec covers scaffolding the project structure, adding dependencies, and creating foundational utility code. No UI is built.
 
 ## Dependencies
 
@@ -15,10 +15,12 @@ The project is initialized with Next.js 16.2.0, React 19, TypeScript strict mode
 | framer-motion | All animations — scroll reveals, page transitions, hover states |
 | react-countup | Stat counter animations |
 | lucide-react | Icon library |
-| next-themes | Dark mode toggle support |
 | clsx | Conditional class joining |
 | tailwind-merge | Tailwind class conflict resolution |
-| tailwindcss-animate | CSS utility animations (shadcn dependency) |
+
+**Not included:**
+- `tailwindcss-animate` — incompatible with Tailwind CSS v4. shadcn/ui for TW v4 generates CSS-based animation utilities directly in `globals.css` via `@theme` and `@keyframes`.
+- `next-themes` — deferred until the design system and theme are established (YAGNI for scaffolding phase).
 
 ### Dev
 | Package | Purpose |
@@ -29,6 +31,9 @@ The project is initialized with Next.js 16.2.0, React 19, TypeScript strict mode
 ## Folder Structure
 
 ```
+(root)
+  components.json                   → shadcn/ui configuration (created by CLI)
+  postcss.config.mjs                → existing, do not modify
 src/
   app/                              → Next.js App Router (exists)
   components/
@@ -38,7 +43,7 @@ src/
     sections/                       → page-specific section components
       index.ts                      → barrel export (placeholder)
     animations/                     → reusable Framer Motion wrappers
-      AnimatedSection.tsx           → whileInView wrapper with fadeUp default
+      AnimatedSection.tsx           → 'use client'; whileInView wrapper with fadeUp default
       index.ts                      → barrel export
     layouts/                        → page layout templates
       index.ts                      → barrel export (placeholder)
@@ -47,8 +52,8 @@ src/
     animations.ts                   → ALL Framer Motion variants centralized
     constants.ts                    → nav links, site metadata, routes (placeholder)
   hooks/
-    useScrollAnimation.ts           → IntersectionObserver → [ref, isInView]
-    useCountUp.ts                   → triggers count on viewport entry
+    useScrollAnimation.ts           → 'use client'; IntersectionObserver → [ref, isInView]
+    useCountUp.ts                   → 'use client'; triggers count on viewport entry
   types/
     index.ts                        → all shared TypeScript interfaces
   content/
@@ -63,9 +68,11 @@ src/
 
 ## Files With Implementation
 
+**Client directive:** All files using browser APIs or React hooks (`AnimatedSection.tsx`, `useScrollAnimation.ts`, `useCountUp.ts`) must begin with `'use client'`. Next.js 16 App Router defaults to Server Components.
+
 ### 1. `lib/animations.ts`
 
-Centralized Framer Motion variants. Every animation in the app imports from here — no inline motion props scattered across components.
+Centralized Framer Motion variants. Every animation in the app imports from here — no inline motion props scattered across components. This file is pure data (variant objects), not a component — no `'use client'` needed.
 
 **Variants to define:**
 
@@ -85,6 +92,8 @@ All animations use `transform` and `opacity` only (GPU-accelerated). No `width`,
 
 ### 2. `hooks/useScrollAnimation.ts`
 
+`'use client'` — uses IntersectionObserver (browser API).
+
 Custom hook wrapping IntersectionObserver.
 
 ```typescript
@@ -98,15 +107,41 @@ function useScrollAnimation(options?: { threshold?: number; rootMargin?: string;
 
 ### 3. `hooks/useCountUp.ts`
 
-Hook that combines `react-countup` trigger with viewport detection.
+`'use client'` — uses React hooks.
+
+Hook that combines `react-countup` trigger with viewport detection. Uses `useScrollAnimation` internally. Count-up auto-triggers when element enters viewport.
 
 ```typescript
-function useCountUp(options: { end: number; duration?: number; prefix?: string; suffix?: string }): { ref: RefCallback; countUpRef: RefObject; start: () => void; inView: boolean }
+function useCountUp(options: {
+  end: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}): {
+  ref: RefCallback;        // attach to the container element for viewport detection
+  countUpRef: RefObject;   // attach to the element where the number renders
+  inView: boolean;         // whether the element is in view
+}
 ```
 
-Uses `useScrollAnimation` internally to trigger count-up when element enters viewport.
+The hook auto-starts the count when `inView` becomes true. No manual `start()` is exposed — the viewport trigger is the only activation mechanism.
+
+**Usage example:**
+```tsx
+function StatCard({ end, label, suffix }: Stat) {
+  const { ref, countUpRef, inView } = useCountUp({ end, suffix });
+  return (
+    <div ref={ref}>
+      <span ref={countUpRef} />
+      <p>{label}</p>
+    </div>
+  );
+}
+```
 
 ### 4. `components/animations/AnimatedSection.tsx`
+
+`'use client'` — uses Framer Motion.
 
 Reusable wrapper component.
 
@@ -129,16 +164,22 @@ Shared interfaces:
 | Interface | Fields |
 |-----------|--------|
 | `NavItem` | label, href, children?: NavItem[] |
-| `CaseStudy` | slug, title, company, industry, summary, metrics: Stat[], coverImage, content |
-| `PageContent` | title, description, hero, sections: SectionContent[] |
-| `SectionContent` | id, title, subtitle?, content, features?: Feature[] |
+| `CaseStudy` | slug, title, company, industry, summary, metrics: Stat[], coverImage, content: string (markdown/MDX) |
+| `PageContent` | title, description, hero: SectionContent, sections: SectionContent[] |
+| `SectionContent` | id, title, subtitle?: string, content: string, features?: Feature[] |
 | `Feature` | title, description, icon?: string |
-| `Testimonial` | quote, author, role, company, avatar? |
-| `Stat` | value: number, label, prefix?, suffix? |
+| `Testimonial` | quote, author, role, company, avatar?: string |
+| `Stat` | value: number, label, prefix?: string, suffix?: string |
 | `FooterLink` | label, href, external?: boolean |
 | `SiteConfig` | name, description, url, ogImage, links: { twitter?, linkedin?, github? } |
 
 ## Configuration Changes
+
+### Order of operations
+1. Run `npx shadcn@latest init` **first** (while `globals.css` is at `src/app/globals.css`)
+2. Move `globals.css` to `src/styles/globals.css`
+3. Update import in `src/app/layout.tsx`
+4. Update `cssVariables` path in `components.json` if needed
 
 ### shadcn/ui initialization
 Run `npx shadcn@latest init` with:
@@ -147,7 +188,7 @@ Run `npx shadcn@latest init` with:
 - CSS variables: yes
 - Path aliases as configured in tsconfig
 
-This creates `components.json` and `lib/utils.ts` with the `cn()` helper.
+This creates `components.json` (at project root) and `lib/utils.ts` with the `cn()` helper.
 
 ### `.prettierrc`
 ```json
@@ -155,7 +196,7 @@ This creates `components.json` and `lib/utils.ts` with the `cn()` helper.
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "es2015",
+  "trailingComma": "es5",
   "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
