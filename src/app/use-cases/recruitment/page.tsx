@@ -1,17 +1,32 @@
 import type { Metadata } from 'next';
+import { PageLayout } from '@/components/layouts';
+import { UseCaseDashboard, UseCaseStats, UseCasePlatform } from '@/components/sections/use-case';
+import { RECRUITMENT } from '@/content/pages';
+
+const data = RECRUITMENT;
 
 export const metadata: Metadata = {
-  title: 'Recruitment Intelligence — Oona.Works',
-  description: 'Recruitment Intelligence',
+  title: `${data.metadata.title} — Oona.Works`,
+  description: data.metadata.description,
 };
 
-export default function RecruitmentIntelligence() {
+export default function RecruitmentPage() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center pt-[132px]">
-      <div className="text-center">
-        <h1 className="text-h3 text-foreground">Recruitment Intelligence</h1>
-        <p className="text-body-lg text-muted-foreground mt-4">Coming soon</p>
-      </div>
-    </div>
+    <PageLayout
+      badge={data.banner.badge}
+      title={data.banner.title}
+      subtitle={data.banner.subtitle}
+      heroImage={data.banner.heroImage}
+      heroImageAlt={data.banner.heroImageAlt}
+    >
+      <UseCaseDashboard
+        title={data.dashboard.title}
+        subtitle={data.dashboard.subtitle}
+        image={data.dashboard.image}
+        imageAlt={data.dashboard.imageAlt}
+      />
+      <UseCaseStats stats={data.stats} />
+      <UseCasePlatform />
+    </PageLayout>
   );
 }
