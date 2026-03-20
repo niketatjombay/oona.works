@@ -37,6 +37,28 @@ export const NAV_LINKS: NavItem[] = [
       },
     ],
   },
+  {
+    label: 'Use Cases',
+    href: ROUTES.useCases.workforce,
+    children: [
+      {
+        label: 'Workforce Intelligence',
+        href: ROUTES.useCases.workforce,
+      },
+      {
+        label: 'Performance Intelligence',
+        href: ROUTES.useCases.performance,
+      },
+      {
+        label: 'Learning Intelligence',
+        href: ROUTES.useCases.learning,
+      },
+      {
+        label: 'Recruitment Intelligence',
+        href: ROUTES.useCases.recruitment,
+      },
+    ],
+  },
 ];
 
 export const FOOTER_DATA = {

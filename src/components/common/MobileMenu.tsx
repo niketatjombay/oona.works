@@ -59,8 +59,16 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }, [isOpen, onClose]);
 
   // Build flat menu links with children expanded
-  const menuLinks: { label: string; href: string; isChild?: boolean }[] = [];
-  NAV_LINKS.forEach((link) => {
+  const menuLinks: {
+    label: string;
+    href: string;
+    isChild?: boolean;
+    isSeparator?: boolean;
+  }[] = [];
+  NAV_LINKS.forEach((link, i) => {
+    if (i > 0 && link.children) {
+      menuLinks.push({ label: '', href: '', isSeparator: true });
+    }
     menuLinks.push({ label: link.label, href: link.href });
     if (link.children) {
       link.children.forEach((child) => {
@@ -68,6 +76,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       });
     }
   });
+  menuLinks.push({ label: '', href: '', isSeparator: true });
   menuLinks.push({ label: CONTACT_CTA_LABEL, href: `mailto:${CONTACT_EMAIL}` });
 
   const drawerContent = (
@@ -87,7 +96,16 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       {/* Navigation links */}
       <nav className="flex-1 px-6">
         <div className="flex flex-col gap-1">
-          {menuLinks.map((link) => {
+          {menuLinks.map((link, idx) => {
+            if (link.isSeparator) {
+              return (
+                <div
+                  key={`sep-${idx}`}
+                  className="border-border my-2 border-t"
+                />
+              );
+            }
+
             const linkClasses = link.isChild
               ? 'typo-body-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg px-8 py-3 transition-colors'
               : 'typo-nav text-foreground hover:bg-muted rounded-lg px-4 py-3 transition-colors flex items-center justify-between';
