@@ -71,6 +71,26 @@ export const scaleOnHover: TargetAndTransition = {
   transition: { duration: 0.2, ease: 'easeOut' },
 };
 
+// Perpetual floating animation for screenshots/images.
+// Use with motion.div animate={floatingLoop} (not variants/whileInView).
+export const floatingLoop = {
+  y: [0, -8, 0],
+  transition: {
+    duration: 3,
+    ease: 'easeInOut',
+    repeat: Infinity,
+    repeatType: 'loop' as const,
+  },
+};
+
+// Glow effect on hover for enterprise pillar cards.
+// Use with whileHover prop, like scaleOnHover.
+export const glowPulse: TargetAndTransition = {
+  scale: 1.02,
+  boxShadow: '0 0 24px rgba(247, 38, 133, 0.25)',
+  transition: { duration: 0.3, ease: 'easeOut' },
+};
+
 // Uses initial/animate/exit keys for AnimatePresence (not hidden/visible).
 // Do NOT pass to AnimatedSection — use with AnimatePresence directly.
 export const pageTransition: Variants = {

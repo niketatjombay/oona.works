@@ -271,5 +271,24 @@
 }
 
 /* ==========================================================================
-   Animation Keyframes (for future CSS-based animations)
+   Animation Keyframes
    ========================================================================== */
+
+@keyframes stroke-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@layer utilities {
+  .animate-stroke-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  .animate-stroke-draw.is-visible {
+    animation: stroke-draw 0.6s ease-out forwards;
+  }
+}
