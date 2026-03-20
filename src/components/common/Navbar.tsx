@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NAV_LINKS, CONTACT_EMAIL, CONTACT_CTA_LABEL } from '@/lib/constants';
 import { CTAButton } from './CTAButton';
@@ -16,6 +16,8 @@ interface NavbarProps {
 export function Navbar({ className }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,20 @@ export function Navbar({ className }: NavbarProps) {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
@@ -58,16 +74,59 @@ export function Navbar({ className }: NavbarProps) {
           </Link>
 
           {/* Nav links — hidden on mobile */}
-          <div className="ml-4 hidden items-center gap-0 md:flex">
+          <div
+            className="ml-4 hidden items-center gap-0 md:flex"
+            ref={dropdownRef}
+          >
             {NAV_LINKS.map((link, i) => (
               <div key={link.href} className="flex items-center">
                 {i > 0 && <div className="bg-border-light mx-4 h-4 w-px" />}
-                <Link
-                  href={link.href}
-                  className="typo-nav text-nav-text rounded-pill hover:bg-muted px-4 py-2 transition-colors"
-                >
-                  {link.label}
-                </Link>
+
+                {link.children ? (
+                  <div className="relative">
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === link.label ? null : link.label
+                        )
+                      }
+                      className="typo-nav text-nav-text rounded-pill hover:bg-muted flex items-center gap-1 px-4 py-2 transition-colors"
+                      aria-expanded={openDropdown === link.label}
+                      aria-haspopup="true"
+                    >
+                      {link.label}
+                      <ChevronDown
+                        size={14}
+                        className={cn(
+                          'transition-transform duration-200',
+                          openDropdown === link.label && 'rotate-180'
+                        )}
+                      />
+                    </button>
+
+                    {openDropdown === link.label && (
+                      <div className="border-border bg-surface absolute top-full left-0 mt-2 w-64 rounded-xl border p-2 shadow-lg">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpenDropdown(null)}
+                            className="typo-nav text-nav-text hover:bg-muted block rounded-lg px-4 py-3 transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="typo-nav text-nav-text rounded-pill hover:bg-muted px-4 py-2 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </div>
             ))}
           </div>

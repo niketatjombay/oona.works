@@ -19,7 +19,24 @@ export const ROUTES = {
 
 export const NAV_LINKS: NavItem[] = [
   { label: 'Home', href: ROUTES.home },
-  { label: 'Case Studies', href: ROUTES.caseStudies.talentIntelligence },
+  {
+    label: 'Case Studies',
+    href: ROUTES.caseStudies.talentIntelligence,
+    children: [
+      {
+        label: 'Talent Intelligence',
+        href: ROUTES.caseStudies.talentIntelligence,
+      },
+      {
+        label: 'Performance Management',
+        href: ROUTES.caseStudies.performanceManagement,
+      },
+      {
+        label: 'Learning Content',
+        href: ROUTES.caseStudies.learningContent,
+      },
+    ],
+  },
 ];
 
 export const FOOTER_DATA = {
