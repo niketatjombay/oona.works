@@ -1,2 +1,2 @@
-// Page layout templates: CaseStudyLayout, ProductPageLayout
-export {};
+export { PageLayout } from './PageLayout';
+export { PageBanner } from './PageBanner';
