@@ -18,8 +18,8 @@ export function UseCaseStats({ stats }: UseCaseStatsProps) {
               key={stat.label}
               className="flex flex-col items-center text-center"
             >
-              <span className="text-h3 text-foreground">{stat.display}</span>
-              <span className="text-body-sm text-muted-foreground mt-2">
+              <span className="typo-h3 text-foreground">{stat.display}</span>
+              <span className="typo-body-sm text-muted-foreground mt-2">
                 {stat.label}
               </span>
             </div>

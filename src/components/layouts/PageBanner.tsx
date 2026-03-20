@@ -37,17 +37,17 @@ export function PageBanner({
 
               {/* Badge pill */}
               <div className="mt-8">
-                <span className="text-overline text-muted-label border-border inline-flex items-center rounded-full border px-4 py-1">
+                <span className="typo-overline text-muted-label border-border inline-flex items-center rounded-full border px-4 py-1">
                   {badge}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-h3 text-foreground mt-4">{title}</h1>
+              <h1 className="typo-h3 text-foreground mt-4">{title}</h1>
 
               {/* Optional subtitle */}
               {subtitle && (
-                <p className="text-body-lg text-foreground mt-4">{subtitle}</p>
+                <p className="typo-body-lg text-foreground mt-4">{subtitle}</p>
               )}
             </div>
 

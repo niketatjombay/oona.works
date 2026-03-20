@@ -15,7 +15,7 @@ export function SharedCaseStudiesSection() {
     <section className="mx-auto max-w-[var(--content-max)] px-4 py-[var(--section-padding)] md:py-[var(--section-padding-lg)]">
       <div className="bg-surface rounded-2xl p-6 md:p-[var(--section-padding)]">
         <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-h3 text-foreground">{title}</h2>
+          <h2 className="typo-h3 text-foreground">{title}</h2>
           <div className="border-border flex size-16 items-center justify-center rounded-full border">
             <ArrowUpRight size={32} />
           </div>
@@ -34,7 +34,7 @@ export function SharedCaseStudiesSection() {
                       height={220}
                       className="h-auto w-full"
                     />
-                    <p className="text-card-heading text-foreground px-8 py-6">
+                    <p className="typo-card-heading text-foreground px-8 py-6">
                       {article.title}
                     </p>
                   </div>
@@ -65,7 +65,7 @@ export function SharedCaseStudiesSection() {
                       height={220}
                       className="h-auto w-full"
                     />
-                    <p className="text-card-heading text-foreground px-8 py-6">
+                    <p className="typo-card-heading text-foreground px-8 py-6">
                       {article.title}
                     </p>
                   </div>

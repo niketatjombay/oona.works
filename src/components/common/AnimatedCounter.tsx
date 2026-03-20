@@ -29,8 +29,8 @@ export function AnimatedCounter({
 
   return (
     <div ref={ref} className={cn('flex flex-col', className)}>
-      <span ref={countUpRef} className="text-display text-foreground" />
-      <span className="text-overline text-foreground mt-2">{label}</span>
+      <span ref={countUpRef} className="typo-display text-foreground" />
+      <span className="typo-overline text-foreground mt-2">{label}</span>
     </div>
   );
 }

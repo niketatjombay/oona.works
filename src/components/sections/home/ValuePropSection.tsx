@@ -24,14 +24,14 @@ function RightCardBody({ body }: { body: string }) {
       elements.push(<br key={i} />);
     } else if (line.startsWith('•')) {
       elements.push(
-        <p key={i} className="text-body text-foreground">
+        <p key={i} className="typo-body text-foreground">
           {line}
         </p>
       );
     } else {
       // Intro sentence — bold and slightly larger
       elements.push(
-        <p key={i} className="text-body text-foreground font-semibold">
+        <p key={i} className="typo-body text-foreground font-semibold">
           {line}
         </p>
       );
@@ -54,8 +54,8 @@ export function ValuePropSection() {
             'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
           )}
         >
-          <h3 className="text-h3 text-foreground">{leftCard.title}</h3>
-          <div className="text-body-lg text-foreground mt-8">
+          <h3 className="typo-h3 text-foreground">{leftCard.title}</h3>
+          <div className="typo-body-lg text-foreground mt-8">
             {renderBodyParagraphs(leftCard.body)}
           </div>
         </AnimatedSection>
@@ -68,7 +68,7 @@ export function ValuePropSection() {
             'bg-surface rounded-xl p-6 md:p-[var(--section-padding)]'
           )}
         >
-          <h3 className="text-h3 text-foreground">{rightCard.title}</h3>
+          <h3 className="typo-h3 text-foreground">{rightCard.title}</h3>
           <div className="mt-4">
             <RightCardBody body={rightCard.body} />
           </div>
@@ -78,7 +78,7 @@ export function ValuePropSection() {
                 line === '' ? (
                   <br key={i} />
                 ) : (
-                  <p key={i} className="text-body-sm text-muted-foreground">
+                  <p key={i} className="typo-body-sm text-muted-foreground">
                     {line}
                   </p>
                 )

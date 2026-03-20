@@ -14,7 +14,7 @@ export function StatsSection() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {/* Left column */}
             <div>
-              <h3 className="text-h3 text-primary">
+              <h3 className="typo-h3 text-primary">
                 {heading.split('\n').map((line, i, arr) => (
                   <span key={i}>
                     {line}
@@ -22,7 +22,7 @@ export function StatsSection() {
                   </span>
                 ))}
               </h3>
-              <p className="text-body-lg text-foreground mt-6">{subtitle}</p>
+              <p className="typo-body-lg text-foreground mt-6">{subtitle}</p>
               <div className="mt-8">
                 <CTAButton variant="dark" href={ctaHref}>
                   {ctaLabel}
@@ -34,10 +34,10 @@ export function StatsSection() {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               {stats.slice(0, 2).map((stat) => (
                 <div key={stat.label}>
-                  <p className="md:text-display text-foreground text-[28px] leading-[36px]">
+                  <p className="md:typo-display text-foreground text-[28px] leading-[36px]">
                     {stat.label}
                   </p>
-                  <p className="text-overline text-foreground mt-2">
+                  <p className="typo-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>
                 </div>
@@ -45,10 +45,10 @@ export function StatsSection() {
               <div className="bg-border col-span-1 h-px sm:col-span-2" />
               {stats.slice(2, 4).map((stat) => (
                 <div key={stat.label}>
-                  <p className="md:text-display text-foreground text-[28px] leading-[36px]">
+                  <p className="md:typo-display text-foreground text-[28px] leading-[36px]">
                     {stat.label}
                   </p>
-                  <p className="text-overline text-foreground mt-2">
+                  <p className="typo-overline text-foreground mt-2">
                     {stat.sublabel}
                   </p>
                 </div>

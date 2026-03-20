@@ -39,10 +39,10 @@ function PillarCard({
         >
           <polyline points="20 6 9 17 4 12" />
         </svg>
-        <h4 className="text-card-heading text-foreground font-semibold">
+        <h4 className="typo-card-heading text-foreground font-semibold">
           {pillar.title}
         </h4>
-        <p className="text-body-sm text-muted-foreground">
+        <p className="typo-body-sm text-muted-foreground">
           {pillar.description}
         </p>
       </div>

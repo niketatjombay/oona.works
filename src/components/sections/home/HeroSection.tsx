@@ -48,7 +48,7 @@ export function HeroSection() {
               <div className="mt-6">
                 {headlineLines.map((line) => (
                   <div key={line}>
-                    <h1 className="md:text-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
+                    <h1 className="md:typo-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
                       {line}
                     </h1>
                   </div>
@@ -63,7 +63,7 @@ export function HeroSection() {
               >
                 {headlineLines.map((line) => (
                   <motion.div key={line} variants={staggerItem}>
-                    <h1 className="md:text-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
+                    <h1 className="md:typo-h1 text-foreground text-[36px] leading-[44px] tracking-[-1px]">
                       {line}
                     </h1>
                   </motion.div>

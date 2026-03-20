@@ -6,12 +6,12 @@ export function Footer() {
     <footer className="mx-auto w-full max-w-[var(--content-max)] px-4 pb-8">
       <div className="bg-surface flex flex-col gap-6 rounded-2xl p-[var(--card-padding-lg)] md:flex-row md:items-center md:justify-between md:gap-0">
         <div className="flex flex-col gap-1">
-          <span className="text-body-lg text-primary">
+          <span className="typo-body-lg text-primary">
             {FOOTER_DATA.emailLabel}
           </span>
           <a
             href={`mailto:${FOOTER_DATA.email}`}
-            className="text-body text-foreground transition-opacity hover:opacity-70"
+            className="typo-body text-foreground transition-opacity hover:opacity-70"
           >
             {FOOTER_DATA.email}
           </a>
@@ -25,7 +25,7 @@ export function Footer() {
         />
       </div>
 
-      <p className="text-body-sm text-muted-foreground mt-4 text-center">
+      <p className="typo-body-sm text-muted-foreground mt-4 text-center">
         {FOOTER_DATA.copyright}
       </p>
     </footer>

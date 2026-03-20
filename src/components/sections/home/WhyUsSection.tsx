@@ -30,7 +30,7 @@ export function WhyUsSection() {
               index === 1 ? 'bg-secondary' : 'bg-secondary-light'
             }`}
           >
-            <p className="text-body-lg">
+            <p className="typo-body-lg">
               {card.prefix && (
                 <span className="text-muted-foreground">{card.prefix}</span>
               )}

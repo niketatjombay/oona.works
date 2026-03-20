@@ -64,7 +64,7 @@ export function Navbar({ className }: NavbarProps) {
                 {i > 0 && <div className="bg-border-light mx-4 h-4 w-px" />}
                 <Link
                   href={link.href}
-                  className="text-nav text-nav-text rounded-pill hover:bg-muted px-4 py-2 transition-colors"
+                  className="typo-nav text-nav-text rounded-pill hover:bg-muted px-4 py-2 transition-colors"
                 >
                   {link.label}
                 </Link>

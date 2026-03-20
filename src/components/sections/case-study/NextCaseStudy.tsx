@@ -21,7 +21,7 @@ export function NextCaseStudy({ currentSlug }: NextCaseStudyProps) {
       as="div"
       className="mx-auto max-w-[var(--content-max)] px-4 py-12"
     >
-      <p className="text-overline text-muted-label mb-4">
+      <p className="typo-overline text-muted-label mb-4">
         {NEXT_CASE_STUDY_LABEL}
       </p>
       <Link href={`/case-studies/${next.slug}`}>
@@ -34,7 +34,7 @@ export function NextCaseStudy({ currentSlug }: NextCaseStudyProps) {
             className="rounded-md"
           />
           <div className="flex-1">
-            <h3 className="text-card-heading text-foreground">{next.title}</h3>
+            <h3 className="typo-card-heading text-foreground">{next.title}</h3>
           </div>
           <ArrowRight size={24} className="text-muted-foreground shrink-0" />
         </div>

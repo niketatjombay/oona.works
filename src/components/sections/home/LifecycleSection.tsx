@@ -36,13 +36,13 @@ export function LifecycleSection() {
                       <ArrowUpRight className="text-foreground h-5 w-5" />
                     </div>
 
-                    <h3 className="text-card-heading text-foreground pr-14">
+                    <h3 className="typo-card-heading text-foreground pr-14">
                       {card.title}
                     </h3>
 
                     <ul className="mt-3 space-y-1">
                       {card.items.map((item, i) => (
-                        <li key={i} className="text-body-sm text-foreground">
+                        <li key={i} className="typo-body-sm text-foreground">
                           {'> '}
                           {item}
                         </li>
@@ -89,13 +89,13 @@ export function LifecycleSection() {
                       <ArrowUpRight className="text-foreground h-5 w-5" />
                     </div>
 
-                    <h3 className="text-card-heading text-foreground pr-14">
+                    <h3 className="typo-card-heading text-foreground pr-14">
                       {card.title}
                     </h3>
 
                     <ul className="mt-3 space-y-1">
                       {card.items.map((item, i) => (
-                        <li key={i} className="text-body-sm text-foreground">
+                        <li key={i} className="typo-body-sm text-foreground">
                           {'> '}
                           {item}
                         </li>

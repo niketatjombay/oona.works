@@ -13,7 +13,7 @@ export function CaseStudyProblem({ text }: CaseStudyProblemProps) {
       className="mx-auto max-w-[var(--content-max)] px-4 py-12"
     >
       {paragraphs.map((paragraph, index) => (
-        <p key={index} className="text-body text-foreground">
+        <p key={index} className="typo-body text-foreground">
           {paragraph}
         </p>
       ))}

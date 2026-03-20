@@ -117,10 +117,10 @@
 /* ==========================================================================
    Typography Utility Classes
    Composite type styles: size + line-height + letter-spacing + weight + font
-   Usage: <h1 className="text-h1 text-foreground">...</h1>
+   Usage: <h1 className="typo-h1 text-foreground">...</h1>
    ========================================================================== */
 
-@utility text-h1 {
+@utility typo-h1 {
   font-family: var(--oona-font-heading);
   font-size: 64px;
   line-height: 83.2px;
@@ -128,7 +128,7 @@
   font-weight: 500;
 }
 
-@utility text-h2 {
+@utility typo-h2 {
   font-family: var(--oona-font-heading);
   font-size: 56px;
   line-height: 67.2px;
@@ -136,7 +136,7 @@
   font-weight: 500;
 }
 
-@utility text-h3 {
+@utility typo-h3 {
   font-family: var(--oona-font-heading);
   font-size: 32px;
   line-height: 40px;
@@ -144,7 +144,7 @@
   font-weight: 500;
 }
 
-@utility text-h4 {
+@utility typo-h4 {
   font-family: var(--oona-font-heading);
   font-size: 32px;
   line-height: 40px;
@@ -152,7 +152,7 @@
   font-weight: 500;
 }
 
-@utility text-display {
+@utility typo-display {
   font-family: var(--oona-font-heading);
   font-size: 44px;
   line-height: 56px;
@@ -160,7 +160,7 @@
   font-weight: 500;
 }
 
-@utility text-card-title {
+@utility typo-card-title {
   font-family: var(--oona-font-heading);
   font-size: 24px;
   line-height: 28px;
@@ -168,7 +168,7 @@
   font-weight: 600;
 }
 
-@utility text-card-heading {
+@utility typo-card-heading {
   font-family: var(--oona-font-heading);
   font-size: 18px;
   line-height: 24px;
@@ -176,7 +176,7 @@
   font-weight: 500;
 }
 
-@utility text-body-lg {
+@utility typo-body-lg {
   font-family: var(--oona-font-body);
   font-size: 20px;
   line-height: 32px;
@@ -184,7 +184,7 @@
   font-weight: 400;
 }
 
-@utility text-body {
+@utility typo-body {
   font-family: var(--oona-font-body);
   font-size: 18px;
   line-height: 24px;
@@ -192,7 +192,7 @@
   font-weight: 400;
 }
 
-@utility text-body-sm {
+@utility typo-body-sm {
   font-family: var(--oona-font-body);
   font-size: 14px;
   line-height: 24px;
@@ -200,7 +200,7 @@
   font-weight: 400;
 }
 
-@utility text-overline {
+@utility typo-overline {
   font-family: var(--oona-font-ui);
   font-size: 14px;
   line-height: 25.2px;
@@ -209,7 +209,7 @@
   text-transform: uppercase;
 }
 
-@utility text-nav {
+@utility typo-nav {
   font-family: var(--oona-font-ui);
   font-size: 14px;
   line-height: 24px;
@@ -217,7 +217,7 @@
   font-weight: 500;
 }
 
-@utility text-button {
+@utility typo-button {
   font-family: var(--oona-font-heading);
   font-size: 16px;
   line-height: 24px;
@@ -225,7 +225,7 @@
   font-weight: 500;
 }
 
-@utility text-button-lg {
+@utility typo-button-lg {
   font-family: var(--oona-font-heading);
   font-size: 24px;
   line-height: 32px;

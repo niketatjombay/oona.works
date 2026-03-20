@@ -46,7 +46,7 @@ export function SharedContactSection() {
   };
 
   const inputClasses =
-    'bg-surface border border-border rounded-sm h-[56px] px-3 text-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder';
+    'bg-surface border border-border rounded-sm h-[56px] px-3 typo-body-sm w-full focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-placeholder';
 
   const renderField = (
     fieldName: 'firstName' | 'lastName' | 'email' | 'message'
@@ -57,7 +57,7 @@ export function SharedContactSection() {
 
     return (
       <div key={fieldName}>
-        <label htmlFor={fieldName} className="text-nav text-foreground">
+        <label htmlFor={fieldName} className="typo-nav text-foreground">
           {field.label}
         </label>
         {isTextarea ? (
@@ -111,13 +111,13 @@ export function SharedContactSection() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Left column */}
             <div>
-              <p className="text-overline text-muted-label">
+              <p className="typo-overline text-muted-label">
                 {HOME_CONTACT.overline}
               </p>
-              <h2 className="text-h2 text-foreground mt-2">
+              <h2 className="typo-h2 text-foreground mt-2">
                 {HOME_CONTACT.title}
               </h2>
-              <p className="text-body-lg text-foreground mt-4">
+              <p className="typo-body-lg text-foreground mt-4">
                 {HOME_CONTACT.subtitle}
               </p>
               <Image
@@ -133,7 +133,7 @@ export function SharedContactSection() {
             <div>
               {isSubmitted ? (
                 <div className="flex h-full items-center justify-center">
-                  <p className="text-h3 text-foreground text-center">
+                  <p className="typo-h3 text-foreground text-center">
                     {HOME_CONTACT.successMessage}
                   </p>
                 </div>

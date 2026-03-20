@@ -11,9 +11,9 @@ interface SectionHeaderProps {
 }
 
 const titleClasses = {
-  h2: 'text-h2',
-  h3: 'text-h3',
-  h4: 'text-h4',
+  h2: 'typo-h2',
+  h3: 'typo-h3',
+  h4: 'typo-h4',
 } as const;
 
 export function SectionHeader({
@@ -34,7 +34,7 @@ export function SectionHeader({
       )}
     >
       {overline && (
-        <span className="text-overline text-muted-label mb-2">{overline}</span>
+        <span className="typo-overline text-muted-label mb-2">{overline}</span>
       )}
       {titleSize === 'h2' && (
         <h2 className={cn(titleClasses.h2, 'text-foreground')}>{title}</h2>
@@ -46,7 +46,7 @@ export function SectionHeader({
         <h4 className={cn(titleClasses.h4, 'text-foreground')}>{title}</h4>
       )}
       {subtitle && (
-        <p className="text-body-lg text-foreground mt-4">{subtitle}</p>
+        <p className="typo-body-lg text-foreground mt-4">{subtitle}</p>
       )}
     </AnimatedSection>
   );

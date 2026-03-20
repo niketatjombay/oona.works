@@ -27,7 +27,7 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
           as="div"
           className="bg-surface rounded-xl p-6 md:p-[var(--section-padding)]"
         >
-          <h3 className="text-h3 text-foreground mb-6">{howItWorks.title}</h3>
+          <h3 className="typo-h3 text-foreground mb-6">{howItWorks.title}</h3>
           <div ref={ref} className="relative">
             {/* Background track */}
             <div className="bg-border absolute top-0 bottom-0 left-[7px] w-0.5" />
@@ -48,10 +48,10 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
                 <div key={step.number} className="relative pl-8">
                   {/* Circle marker */}
                   <div className="bg-surface border-primary absolute top-1 left-0 size-[14px] rounded-full border-2" />
-                  <p className="text-body-sm text-foreground font-semibold">
+                  <p className="typo-body-sm text-foreground font-semibold">
                     {step.number}. {step.title}
                   </p>
-                  <p className="text-body-sm text-foreground">
+                  <p className="typo-body-sm text-foreground">
                     {step.description}
                   </p>
                 </div>
@@ -65,10 +65,10 @@ export function CaseStudyBody({ howItWorks, outcomes }: CaseStudyBodyProps) {
           className="bg-surface rounded-xl p-6 md:p-[var(--section-padding)]"
           delay={0.1}
         >
-          <h3 className="text-h3 text-foreground mb-6">{outcomes.title}</h3>
+          <h3 className="typo-h3 text-foreground mb-6">{outcomes.title}</h3>
           <ul className="list-disc space-y-2 pl-6">
             {outcomes.items.map((item, index) => (
-              <li key={index} className="text-body-sm text-foreground">
+              <li key={index} className="typo-body-sm text-foreground">
                 {item}
               </li>
             ))}

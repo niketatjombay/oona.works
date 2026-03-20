@@ -11,15 +11,15 @@ const ctaButtonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground rounded-lg',
-        secondary: 'bg-secondary text-secondary-foreground rounded-2xl',
-        dark: 'bg-foreground text-primary-foreground rounded-2xl font-[family-name:var(--oona-font-ui)]',
-        submit: 'bg-primary text-primary-foreground rounded-full',
+        primary: 'bg-primary rounded-lg text-primary-foreground',
+        secondary: 'bg-secondary rounded-2xl text-secondary-foreground',
+        dark: 'bg-foreground rounded-2xl text-primary-foreground font-[family-name:var(--oona-font-ui)]',
+        submit: 'bg-primary rounded-full text-primary-foreground',
       },
       size: {
-        sm: 'h-[40px] px-4 text-nav',
-        default: 'h-[50px] px-6 text-button',
-        lg: 'h-[60px] px-8 text-button',
+        sm: 'h-[40px] px-4 typo-nav',
+        default: 'h-[50px] px-6 typo-button',
+        lg: 'h-[60px] px-8 typo-button',
       },
     },
     defaultVariants: {
