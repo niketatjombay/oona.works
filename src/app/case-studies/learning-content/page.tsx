@@ -11,7 +11,7 @@ import { LEARNING_CONTENT } from '@/content/case-studies';
 const data = LEARNING_CONTENT;
 
 export const metadata: Metadata = {
-  title: `${data.metadata.title} — Oona.Works`,
+  title: data.metadata.title,
   description: data.metadata.description,
 };
 

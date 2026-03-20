@@ -11,7 +11,7 @@ import { TALENT_INTELLIGENCE } from '@/content/case-studies';
 const data = TALENT_INTELLIGENCE;
 
 export const metadata: Metadata = {
-  title: `${data.metadata.title} — Oona.Works`,
+  title: data.metadata.title,
   description: data.metadata.description,
 };
 

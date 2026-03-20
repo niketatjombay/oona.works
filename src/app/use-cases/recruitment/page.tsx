@@ -10,7 +10,7 @@ import { RECRUITMENT } from '@/content/pages';
 const data = RECRUITMENT;
 
 export const metadata: Metadata = {
-  title: `${data.metadata.title} — Oona.Works`,
+  title: data.metadata.title,
   description: data.metadata.description,
 };
 
