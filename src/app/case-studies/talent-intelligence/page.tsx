@@ -1,19 +1,28 @@
 import type { Metadata } from 'next';
+import { PageLayout } from '@/components/layouts';
+import { CaseStudyProblem, CaseStudySummary, CaseStudyBody } from '@/components/sections/case-study';
+import { HighlightQuote } from '@/components/sections/shared';
+import { TALENT_INTELLIGENCE } from '@/content/case-studies';
+
+const data = TALENT_INTELLIGENCE;
 
 export const metadata: Metadata = {
-  title: 'Talent Intelligence Case Study — Oona.Works',
-  description: 'Talent Intelligence Case Study',
+  title: `${data.metadata.title} — Oona.Works`,
+  description: data.metadata.description,
 };
 
-export default function TalentIntelligenceCaseStudy() {
+export default function TalentIntelligencePage() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center pt-[132px]">
-      <div className="text-center">
-        <h1 className="text-h3 text-foreground">
-          Talent Intelligence Case Study
-        </h1>
-        <p className="text-body-lg text-muted-foreground mt-4">Coming soon</p>
-      </div>
-    </div>
+    <PageLayout
+      badge={data.banner.badge}
+      title={data.banner.title}
+      heroImage={data.banner.heroImage}
+      heroImageAlt={data.banner.heroImageAlt}
+    >
+      <CaseStudyProblem text={data.problem} />
+      <CaseStudySummary text={data.summary} />
+      <CaseStudyBody howItWorks={data.howItWorks} outcomes={data.outcomes} />
+      <HighlightQuote text={data.quote} />
+    </PageLayout>
   );
 }
