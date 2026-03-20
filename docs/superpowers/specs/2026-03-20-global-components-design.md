@@ -40,15 +40,15 @@ No changes to existing animation system files. The shadcn `button.tsx` is untouc
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│  [Logo 80x48]  Home │ Case Studies ▾    ☰    [Contact Us]   │
+│  [Logo 80x48]  Home │ Case Studies      ☰    [Contact Us]   │
 │  left-[16px]   left-[88px]              center    right-[17px]│
 └──────────────────────────────────────────────────────────────┘
 ```
 
 - **Container:** `max-w-[var(--container-max)]` (1160px), centered, `h-[var(--nav-height)]` (84px), `rounded-pill` (40px), positioned `top-[var(--nav-offset)]` (24px) from page top.
-- **Logo:** 80x48px image from `public/images/logo.png`. Links to `/`.
-- **Nav links:** "Home" (links to `/`), vertical divider (`bg-border-light`, 1px × 16px), "Case Studies" (links to `/case-studies`) with dropdown chevron icon (lucide-react `ChevronDown`).
-- **Menu button:** Hamburger icon (lucide-react `Menu`), 40x40px hit area, `rounded-pill`. Visible on desktop too per Figma. Opens `MobileMenu`.
+- **Logo:** 80x48px image from `public/images/logo.png` using `next/image` (`<Image width={80} height={48}>`). Wrapped in `next/link` (`<Link href="/">`).
+- **Nav links:** "Home" (links to `/` via `next/link`), vertical divider (`bg-border-light`, 1px × 16px), "Case Studies" (links to `/case-studies` via `next/link`). No dropdown chevron — the link navigates directly to the case studies page.
+- **Menu button:** Hamburger icon (lucide-react `Menu`), 40x40px hit area, `rounded-pill`. Visible on desktop too per Figma. Opens `MobileMenu`. Must have `aria-label="Open menu"` and `aria-expanded={isMobileMenuOpen}`.
 - **CTA button:** `CTAButton` with `variant="secondary"` — lime green, "Contact Us ~ Email", `href="mailto:oona@oona.works"`.
 
 ### Desktop vs Mobile
@@ -58,7 +58,7 @@ No changes to existing animation system files. The shadcn `button.tsx` is untouc
 
 ### Implementation
 
-`'use client'` component. Uses `useState` for `isScrolled` (triggered by `useEffect` with scroll listener, threshold 80px) and `isMobileMenuOpen`. Fixed position with `z-50`.
+`'use client'` component. Uses `useState` for `isScrolled` (triggered by `useEffect` with scroll listener, threshold 80px, `{ passive: true }`) and `isMobileMenuOpen`. Fixed position with `z-50`.
 
 ```tsx
 interface NavbarProps {
@@ -87,7 +87,7 @@ Full-screen overlay. Opens with Framer Motion `AnimatePresence`. Dark background
 ```
 
 - **Close button:** Top-right, lucide-react `X` icon, 48x48 hit area.
-- **Links:** Centered vertically, `text-h3` size, white text, staggered fadeUp entrance.
+- **Links:** Centered vertically, `text-h3` size, white text, staggered fadeUp entrance. Reads from `NAV_LINKS` plus an additional "Contact Us" entry with `href="mailto:oona@oona.works"` (from `CONTACT_EMAIL` and `CONTACT_CTA_LABEL` constants). Uses `next/link` for internal hrefs, `<a>` for mailto.
 - **Background:** `bg-foreground/95` with `backdrop-blur-sm`.
 - **Animation:** Container fades in (opacity 0→1, 200ms). Links stagger in with `staggerContainer` + `staggerItem` from `lib/animations.ts`.
 
@@ -102,7 +102,12 @@ interface MobileMenuProps {
 }
 ```
 
-Renders a portal or fixed overlay. Locks body scroll when open (`overflow: hidden` on body).
+Renders a fixed overlay (`position: fixed`, `inset-0`, `z-50`). Locks body scroll when open via `useEffect` that sets `document.body.style.overflow = 'hidden'` and restores on cleanup. Must close on Escape key press (`useEffect` with `keydown` listener).
+
+**Accessibility:**
+- Close button: `aria-label="Close menu"`
+- Overlay: `role="dialog"`, `aria-modal="true"`
+- Focus trap: first focusable element receives focus on open
 
 ## Footer
 
@@ -119,8 +124,8 @@ White rounded card inside the content area. Two elements:
 
 - **Container:** `max-w-[var(--content-max)]` (1140px), `bg-surface`, `rounded-2xl` (24px), `p-[var(--card-padding-lg)]` (48px).
 - **Left side:** "Write to us" label in `text-body-lg text-primary`. Below: "oona@oona.works" as a `mailto:` link in `text-body text-foreground`.
-- **Right side:** Logo image (122x48px) from `public/images/logo-footer.png`, aligned right and vertically centered.
-- **Below the card:** Copyright text, small, muted. "© 2025 Oona.Works. All rights reserved."
+- **Right side:** Logo image (122x48px) from `public/images/logo-footer.png`, aligned right and vertically centered. Use `next/image` (`<Image>`) with explicit `width={122} height={48}` props.
+- **Below the card:** Copyright text, small, muted. Year is dynamic via `new Date().getFullYear()`.
 
 ### Implementation
 
@@ -159,7 +164,12 @@ Uses `scaleOnHover` from `lib/animations.ts` — scale 1.02, shadow lift, 200ms 
 
 ### Implementation
 
-`'use client'` component. Renders as `motion.a` when `href` is provided, `motion.button` otherwise.
+`'use client'` component. Renders as:
+- `motion.button` when no `href` (or `type="submit"`)
+- Framer Motion-wrapped `next/link` (`<Link>`) when `href` starts with `/` (internal navigation)
+- `motion.a` when `href` is external or `mailto:`
+
+The `type` prop is only relevant when rendering as a button (no `href`). When `href` is provided, `type` is ignored.
 
 ```tsx
 interface CTAButtonProps {
@@ -190,7 +200,7 @@ Reusable pattern that appears across multiple sections in the Figma design. Comb
 
 ### Implementation
 
-Server component (no interactivity). Wraps content in `AnimatedSection` for scroll-triggered entrance.
+Server component — no hooks, no browser APIs, no `'use client'`. It imports and renders `AnimatedSection` (a client component) as a wrapper. This is valid in React 19 / Next.js App Router: a server component can render a client component as a leaf, as long as it only passes serializable props (children, className, strings).
 
 ```tsx
 interface SectionHeaderProps {
@@ -246,7 +256,7 @@ The `ref` from `useCountUp` goes on the container div (for viewport detection), 
 All content strings externalized. No hardcoded strings in components.
 
 ```typescript
-import type { NavItem, FooterLink, SiteConfig } from '@/types';
+import type { NavItem, SiteConfig } from '@/types';
 
 export const NAV_LINKS: NavItem[] = [
   { label: 'Home', href: '/' },
@@ -299,6 +309,6 @@ These are extracted from the Figma MCP asset URLs during implementation.
 - No page content or sections (deferred to home page build)
 - No route setup beyond what exists
 - No dark mode
-- No dropdown menu for "Case Studies" (just the link with a chevron icon for now)
+- No dropdown menu for "Case Studies" (direct link for now)
 - No form components
 - No shadcn Button modifications
