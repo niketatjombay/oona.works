@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants, useReducedMotion } from 'framer-motion';
 import { fadeUp } from '@/lib/animations';
 
 interface AnimatedSectionProps {
@@ -23,6 +23,13 @@ export function AnimatedSection({
   delay = 0,
   as = 'section',
 }: AnimatedSectionProps) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    const Element = as;
+    return <Element className={className}>{children}</Element>;
+  }
+
   const Component = motionComponents[as];
 
   return (

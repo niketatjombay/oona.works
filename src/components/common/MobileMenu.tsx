@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { X } from 'lucide-react';
 import { staggerContainer, staggerItem } from '@/lib/animations';
@@ -14,6 +14,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Lock body scroll when open
   useEffect(() => {
@@ -62,6 +63,53 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     ...NAV_LINKS,
     { label: CONTACT_CTA_LABEL, href: `mailto:${CONTACT_EMAIL}` },
   ];
+
+  if (shouldReduceMotion) {
+    return (
+      <>
+        {isOpen && (
+          <div
+            className="bg-foreground/95 fixed inset-0 z-50 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+          >
+            <button
+              ref={closeButtonRef}
+              onClick={onClose}
+              className="absolute top-6 right-6 flex size-12 items-center justify-center text-white"
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+
+            <nav className="flex h-full flex-col items-center justify-center gap-8">
+              {menuLinks.map((link) => (
+                <div key={link.href}>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className="text-h3 text-white transition-opacity hover:opacity-80"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={onClose}
+                      className="text-h3 text-white transition-opacity hover:opacity-80"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
+        )}
+      </>
+    );
+  }
 
   return (
     <AnimatePresence>
