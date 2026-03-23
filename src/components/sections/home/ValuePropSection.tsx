@@ -17,21 +17,30 @@ function renderBodyParagraphs(body: string, className?: string) {
 function RightCardBody({ body }: { body: string }) {
   const lines = body.split('\n');
   const elements: React.ReactNode[] = [];
+  let pastFirstParagraph = false;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (line === '') {
       elements.push(<br key={i} />);
+      pastFirstParagraph = true;
     } else if (line.startsWith('•')) {
       elements.push(
         <p key={i} className="typo-body text-foreground">
           {line}
         </p>
       );
-    } else {
-      // Intro sentence — bold and slightly larger
+    } else if (!pastFirstParagraph) {
+      // First paragraph — bold and slightly larger
       elements.push(
         <p key={i} className="typo-body text-foreground font-semibold">
+          {line}
+        </p>
+      );
+    } else {
+      // Subsequent paragraphs — normal weight
+      elements.push(
+        <p key={i} className="typo-body text-foreground">
           {line}
         </p>
       );
@@ -54,7 +63,20 @@ export function ValuePropSection() {
             'bg-surface rounded-[20px] p-6 md:p-[var(--section-padding)]'
           )}
         >
-          <h3 className="typo-h3 text-foreground">{leftCard.title}</h3>
+          <h3 className="typo-h3 text-foreground">
+            {leftCard.title.split('\n').map((line, i, arr) =>
+              line === '' ? (
+                <br key={i} />
+              ) : (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && line !== '' && arr[i + 1] !== '' && (
+                    <br />
+                  )}
+                </span>
+              )
+            )}
+          </h3>
           <div className="typo-body-lg text-foreground mt-8">
             {renderBodyParagraphs(leftCard.body)}
           </div>

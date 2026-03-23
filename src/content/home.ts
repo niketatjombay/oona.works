@@ -45,12 +45,12 @@ export const HOME_HERO: HeroContent = {
 export const HOME_VALUE_PROP = {
   leftCard: {
     title:
-      "Your clients are asking about AI... But, they don't want just advice and best practices — They also want real AI implementation!",
-    body: 'oona.works can become your AI foundation for HR transformation projects!\n\nYou bring the consulting expertise.\noona.works provides the AI foundation to deliver intelligence at scale.',
+      'Your clients are asking about AI...\n\nNot just advice.\nNot just best practices.\nBut real AI implementation.',
+    body: 'You bring consulting expertise.\nOona.Works brings the AI foundation to deliver intelligence at scale.',
   } as CardContent,
   rightCard: {
     title: 'What we do!',
-    body: "oona.works empowers HR consulting firms to deliver AI-powered HR transformation to their clients — without building tech in-house!\n\nIt connects to a client's existing HR systems (HRMS, ATS, LMS, PMS) to create a single, structured understanding of their organization. This intelligence layer gives you:\n\n\u2022 A complete view of workforce data across systems\n\u2022 Diagnosis of workforce challenges\n\u2022 AI-driven solutions for real organizational contexts",
+    body: "Oona.Works connects to client\u2019s existing HR systems (HRMS, ATS, LMS, PMS) to create a single, structured understanding of their organization. We call it the \u201CContext Layer\u201D.\n\nOona\u2019s AI agents can then be used on this \u201CContext Layer\u201D to provide clients with intelligent solutions around their workforce, performance, learning, operations or other organisational challenges they are facing.",
     governance:
       'All while ensuring\nEnterprise-grade data governance  I  Full audit trails  I  Secure access',
   } as CardContent,
@@ -131,7 +131,7 @@ export const HOME_LIFECYCLE = {
 
 export const HOME_STATS = {
   heading:
-    'How your $150K\nHR consulting project can become a $450K AI transformation engagement with oona.works',
+    "How \u2018just\u2019 an\nHR consulting project\ncan become an\nAI transformation\nengagement with\noona.works",
   subtitle: 'Simply because we empower you to:',
   ctaLabel: 'Know More',
   ctaHref: 'mailto:oona@oona.works',
