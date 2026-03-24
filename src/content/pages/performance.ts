@@ -41,4 +41,8 @@ export const PERFORMANCE: UseCaseContent = {
       label: 'Improvement in quality of feedback',
     },
   ],
+  platform: {
+    image: '/images/platform-overview-performance.png',
+    imageAlt: 'Platform overview – Performance Intelligence highlighted',
+  },
 };

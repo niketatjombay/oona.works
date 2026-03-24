@@ -12,7 +12,7 @@ export function HighlightQuote({ text, className }: HighlightQuoteProps) {
       as="div"
       className={cn('mx-auto max-w-[var(--content-max)] px-4 py-12', className)}
     >
-      <p className="typo-h4 text-primary text-right italic md:ml-auto md:max-w-[60%]">
+      <p className="typo-h4 text-primary text-left italic">
         {text}
       </p>
     </AnimatedSection>

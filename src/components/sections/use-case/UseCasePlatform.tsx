@@ -7,7 +7,15 @@ import { AnimatedSection } from '@/components/animations';
 import { HOME_PLATFORM } from '@/content/home';
 import { floatingLoop } from '@/lib/animations';
 
-export function UseCasePlatform() {
+interface UseCasePlatformProps {
+  image?: string;
+  imageAlt?: string;
+}
+
+export function UseCasePlatform({
+  image = '/images/platform-overview.png',
+  imageAlt = 'Platform overview',
+}: UseCasePlatformProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -20,8 +28,8 @@ export function UseCasePlatform() {
       />
       <motion.div animate={shouldReduceMotion ? undefined : floatingLoop}>
         <Image
-          src="/images/platform-overview.png"
-          alt="Platform overview"
+          src={image}
+          alt={imageAlt}
           width={1380}
           height={512}
           className="mt-8 h-auto w-full rounded-2xl"

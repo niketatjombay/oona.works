@@ -41,4 +41,8 @@ export const RECRUITMENT: UseCaseContent = {
       label: 'Reduction in time to hire',
     },
   ],
+  platform: {
+    image: '/images/platform-overview-recruitment.png',
+    imageAlt: 'Platform overview – Recruitment Intelligence highlighted',
+  },
 };

@@ -41,4 +41,8 @@ export const LEARNING: UseCaseContent = {
       label: 'Acceleration in Skill Acquisition',
     },
   ],
+  platform: {
+    image: '/images/platform-overview-learning.png',
+    imageAlt: 'Platform overview – Learning Intelligence highlighted',
+  },
 };

@@ -37,7 +37,7 @@ interface FormField {
 }
 
 export const HOME_HERO: HeroContent = {
-  headline: 'Your AI Partner in\nHR Transformation!',
+  headline: 'Your AI Partner in\nHR\u00A0Transformation!',
   ctaLabel: 'Talk to us',
   ctaHref: 'mailto:oona@oona.works',
 };

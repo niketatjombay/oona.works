@@ -2,6 +2,7 @@
 
 import { AnimatedCounter } from '@/components/common';
 import { AnimatedSection } from '@/components/animations';
+import { cn } from '@/lib/utils';
 import type { UseCaseStat } from '@/types';
 
 interface UseCaseStatsProps {
@@ -11,7 +12,12 @@ interface UseCaseStatsProps {
 export function UseCaseStats({ stats }: UseCaseStatsProps) {
   return (
     <AnimatedSection className="mx-auto max-w-[var(--content-max)] px-4 py-12">
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
+      <div
+        className={cn(
+          'grid grid-cols-2 gap-8 md:grid-cols-3',
+          stats.length > 3 && 'lg:grid-cols-4'
+        )}
+      >
         {stats.map((stat) =>
           stat.type === 'static' ? (
             <div

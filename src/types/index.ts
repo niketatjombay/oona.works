@@ -124,4 +124,8 @@ export interface UseCaseContent {
     imageAlt: string;
   };
   stats: UseCaseStat[];
+  platform?: {
+    image: string;
+    imageAlt: string;
+  };
 }

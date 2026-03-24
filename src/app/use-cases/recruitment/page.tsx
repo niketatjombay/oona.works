@@ -30,7 +30,10 @@ export default function RecruitmentPage() {
         imageAlt={data.dashboard.imageAlt}
       />
       <UseCaseStats stats={data.stats} />
-      <UseCasePlatform />
+      <UseCasePlatform
+        image={data.platform?.image}
+        imageAlt={data.platform?.imageAlt}
+      />
     </PageLayout>
   );
 }
