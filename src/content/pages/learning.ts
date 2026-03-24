@@ -42,7 +42,7 @@ export const LEARNING: UseCaseContent = {
     },
   ],
   platform: {
-    image: '/images/platform-overview-learning.png',
+    image: '/images/platform-overview.png',
     imageAlt: 'Platform overview – Learning Intelligence highlighted',
   },
 };

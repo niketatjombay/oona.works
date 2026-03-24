@@ -42,7 +42,7 @@ export const RECRUITMENT: UseCaseContent = {
     },
   ],
   platform: {
-    image: '/images/platform-overview-recruitment.png',
+    image: '/images/platform-overview.png',
     imageAlt: 'Platform overview – Recruitment Intelligence highlighted',
   },
 };

@@ -43,7 +43,7 @@ export const WORKFORCE: UseCaseContent = {
     { type: 'static', display: 'Faster', label: 'Talent deployment' },
   ],
   platform: {
-    image: '/images/platform-overview-workforce.png',
+    image: '/images/platform-overview.png',
     imageAlt: 'Platform overview – Talent Intelligence highlighted',
   },
 };

@@ -42,7 +42,7 @@ export const PERFORMANCE: UseCaseContent = {
     },
   ],
   platform: {
-    image: '/images/platform-overview-performance.png',
+    image: '/images/platform-overview.png',
     imageAlt: 'Platform overview – Performance Intelligence highlighted',
   },
 };
